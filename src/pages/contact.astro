@@ -1,0 +1,594 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact Us - Hearth & Harrow" description="Connect with the keepers of ancient wisdom at Hearth & Harrow">
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Connect with Our Circle</h1>
+        <p>We welcome seekers, practitioners, and the curious-hearted</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form & Info -->
+  <section class="contact-main">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="contact-form-section">
+          <h2>Send Us a Message</h2>
+          <p class="form-intro">
+            Whether you seek guidance, have questions about our offerings, or wish to share your own wisdom, 
+            we are here to listen. Every message is received with reverence and answered with care.
+          </p>
+          
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject" required>
+                <option value="">Choose a topic...</option>
+                <option value="product-inquiry">Product Inquiry</option>
+                <option value="guidance">Seeking Guidance</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="feedback">Feedback & Suggestions</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required placeholder="Share your thoughts, questions, or experiences..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info-section">
+          <div class="info-card mystical-card">
+            <h3>Our Sacred Space</h3>
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div class="info-content">
+                <p><strong>Mystical Address</strong></p>
+                <p>13 Moonstone Lane<br>Salem, MA 01970<br>United States</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">📧</div>
+              <div class="info-content">
+                <p><strong>Email</strong></p>
+                <p><a href="mailto:wisdom@hearthandharrow.com">wisdom@hearthandharrow.com</a></p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">📞</div>
+              <div class="info-content">
+                <p><strong>Sacred Hotline</strong></p>
+                <p><a href="tel:+1-555-MYSTIC">(555) MYSTIC-1</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="hours-card mystical-card">
+            <h3>Circle Hours</h3>
+            <div class="hours-list">
+              <div class="hours-item">
+                <span class="day">Monday - Wednesday</span>
+                <span class="time">10:00 AM - 7:00 PM</span>
+              </div>
+              <div class="hours-item">
+                <span class="day">Thursday - Friday</span>
+                <span class="time">10:00 AM - 9:00 PM</span>
+              </div>
+              <div class="hours-item">
+                <span class="day">Saturday</span>
+                <span class="time">9:00 AM - 8:00 PM</span>
+              </div>
+              <div class="hours-item">
+                <span class="day">Sunday</span>
+                <span class="time">11:00 AM - 6:00 PM</span>
+              </div>
+              <div class="special-hours">
+                <p><em>Closed on major sabbats for ceremonial observance</em></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-card mystical-card">
+            <h3>Follow Our Journey</h3>
+            <p>Connect with our community and stay updated on lunar cycles, seasonal rituals, and new arrivals.</p>
+            <div class="social-links">
+              <a href="#" class="social-link">🌙 Instagram</a>
+              <a href="#" class="social-link">📘 Facebook</a>
+              <a href="#" class="social-link">🐦 Twitter</a>
+              <a href="#" class="social-link">📺 YouTube</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item mystical-card">
+          <h3>Do you offer spiritual guidance?</h3>
+          <p>While we provide tools and resources, we encourage you to seek guidance from qualified practitioners in your area. We're happy to recommend trusted mentors within our network.</p>
+        </div>
+        
+        <div class="faq-item mystical-card">
+          <h3>Are your products ethically sourced?</h3>
+          <p>Absolutely. We work directly with sustainable suppliers and indigenous communities, ensuring fair compensation and environmental responsibility in all our sourcing practices.</p>
+        </div>
+        
+        <div class="faq-item mystical-card">
+          <h3>Do you ship internationally?</h3>
+          <p>Yes, we ship worldwide! However, please note that certain herbs and materials may be restricted in some countries. We'll verify regulations before processing international orders.</p>
+        </div>
+        
+        <div class="faq-item mystical-card">
+          <h3>Can I return items if they don't resonate with me?</h3>
+          <p>We understand that spiritual tools must align with your energy. We offer a 30-day return policy for unused items in their original condition.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @import '../styles/global.scss';
+
+  .contact-hero {
+    padding: 8rem 0 4rem;
+    background: var(--mystical-gradient);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(184, 148, 95, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(74, 44, 90, 0.15) 0%, transparent 50%);
+    animation: mysticalShift 20s ease-in-out infinite alternate;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content p {
+    font-size: 1.3rem;
+    color: var(--sage-green);
+    font-style: italic;
+  }
+
+  .contact-main {
+    padding: 6rem 0;
+    background: rgba(26, 26, 26, 0.3);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-form-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+  }
+
+  .form-intro {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    color: var(--sage-green);
+  }
+
+  .contact-form {
+    background: rgba(61, 47, 31, 0.3);
+    padding: 3rem;
+    border-radius: 15px;
+    border: 1px solid rgba(184, 148, 95, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .form-group {
+    margin-bottom: 2rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--muted-gold);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(26, 26, 26, 0.7);
+    border: 1px solid rgba(184, 148, 95, 0.3);
+    border-radius: 8px;
+    color: var(--moonlight-silver);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--muted-gold);
+    box-shadow: 0 0 10px rgba(184, 148, 95, 0.2);
+    background: rgba(26, 26, 26, 0.9);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--sage-green);
+    opacity: 0.7;
+  }
+
+  .form-group select {
+    cursor: pointer;
+  }
+
+  .form-group select option {
+    background: var(--shadow-black);
+    color: var(--moonlight-silver);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--ethereal-gradient);
+    color: var(--moonlight-silver);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(184, 148, 95, 0.3);
+  }
+
+  .contact-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .info-card,
+  .hours-card,
+  .social-card {
+    background: rgba(61, 47, 31, 0.3);
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(184, 148, 95, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .info-card h3,
+  .hours-card h3,
+  .social-card h3 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .info-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+  }
+
+  .info-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-icon {
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .info-content p {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .info-content p:first-child {
+    color: var(--muted-gold);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .info-content a {
+    color: var(--sage-green);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .info-content a:hover {
+    color: var(--muted-gold);
+  }
+
+  .hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hours-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(184, 148, 95, 0.2);
+  }
+
+  .hours-item:last-child {
+    border-bottom: none;
+  }
+
+  .day {
+    color: var(--muted-gold);
+    font-weight: 500;
+  }
+
+  .time {
+    color: var(--sage-green);
+  }
+
+  .special-hours {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(184, 148, 95, 0.2);
+    text-align: center;
+  }
+
+  .special-hours p {
+    color: var(--sage-green);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .social-card p {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--sage-green);
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .social-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    background: rgba(26, 26, 26, 0.5);
+    border: 1px solid rgba(184, 148, 95, 0.3);
+    border-radius: 8px;
+    color: var(--muted-gold);
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .social-link:hover {
+    background: rgba(184, 148, 95, 0.1);
+    border-color: var(--muted-gold);
+    transform: translateY(-2px);
+  }
+
+  .faq-section {
+    padding: 6rem 0;
+    background: var(--earth-gradient);
+  }
+
+  .faq-section h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 3rem;
+  }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .faq-item {
+    background: rgba(26, 26, 26, 0.7);
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(184, 148, 95, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .faq-item h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--muted-gold);
+  }
+
+  .faq-item p {
+    line-height: 1.7;
+    color: var(--moonlight-silver);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .contact-form {
+      padding: 2rem;
+    }
+
+    .faq-section h2 {
+      font-size: 2.5rem;
+    }
+
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .social-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Contact form handling
+  document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const name = formData.get('name');
+    const subject = formData.get('subject');
+    
+    // Create mystical submission popup
+    const popup = document.createElement('div');
+    popup.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #2d5016, #1a2b3d);
+        padding: 3rem;
+        border-radius: 15px;
+        border: 2px solid #b8945f;
+        color: #e8e8e8;
+        text-align: center;
+        z-index: 10000;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        max-width: 500px;
+        animation: mysticalAppear 0.5s ease-out;
+      ">
+        <h3 style="color: #b8945f; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">
+          ✨ Message Received ✨
+        </h3>
+        <p style="margin-bottom: 1rem; line-height: 1.6;">
+          Thank you, ${name}. Your message regarding "${subject}" has been received by our circle.
+        </p>
+        <p style="margin-bottom: 2rem; line-height: 1.6; font-style: italic; color: #9cae7c;">
+          We will respond within 24-48 hours, or during the next waxing moon - whichever comes first.
+          May wisdom guide your path until we speak again.
+        </p>
+        <button onclick="this.parentElement.parentElement.remove()" style="
+          background: #b8945f;
+          color: #1a1a1a;
+          border: none;
+          padding: 0.75rem 2rem;
+          border-radius: 30px;
+          cursor: pointer;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        ">
+          Blessed Be
+        </button>
+      </div>
+      <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+      " onclick="this.parentElement.remove()"></div>
+    `;
+    
+    document.body.appendChild(popup);
+    
+    // Reset form
+    e.target.reset();
+  });
+
+  // Add mystical appear animation if not already present
+  if (!document.querySelector('#mystical-animation-styles')) {
+    const style = document.createElement('style');
+    style.id = 'mystical-animation-styles';
+    style.textContent = `
+      @keyframes mysticalAppear {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+</script>

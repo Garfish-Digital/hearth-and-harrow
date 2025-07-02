@@ -1,0 +1,292 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplies for Modern Practitioners" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content="https://hearthandharrow.netlify.app">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <nav class="main-nav">
+    <div class="container">
+      <div class="nav-content">
+        <a href="/" class="logo">
+          <span class="logo-text">Hearth & Harrow</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li class="dropdown">
+            <a href="/shop">Shop</a>
+            <ul class="dropdown-menu">
+              <li><a href="/shop/herbs-resins">Herbs & Resins</a></li>
+              <li><a href="/shop/crystals">Crystals</a></li>
+              <li><a href="/shop/divination">Divination Tools</a></li>
+              <li><a href="/shop/ritual-wear">Ritual Wear</a></li>
+            </ul>
+          </li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Hearth & Harrow</h3>
+          <p>Authentic tools for your spiritual journey</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="/shop/herbs-resins">Herbs & Resins</a></li>
+            <li><a href="/shop/crystals">Crystals</a></li>
+            <li><a href="/shop/divination">Divination Tools</a></li>
+            <li><a href="/shop/ritual-wear">Ritual Wear</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Hearth & Harrow. A mystical demo experience.</p>
+      </div>
+    </div>
+  </footer>
+
+  <style lang="scss">
+    @import '../styles/global.scss';
+
+    .main-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(184, 148, 95, 0.2);
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--muted-gold);
+      text-decoration: none;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo:hover {
+      color: var(--sage-green);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--moonlight-silver);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(184, 148, 95, 0.1);
+      color: var(--muted-gold);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(184, 148, 95, 0.2);
+      border-radius: 10px;
+      padding: 1rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      min-width: 200px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li {
+      padding: 0;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      text-transform: none;
+      letter-spacing: normal;
+      border-radius: 0;
+    }
+
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .mobile-menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--muted-gold);
+      transition: all 0.3s ease;
+    }
+
+    main {
+      margin-top: 80px;
+      min-height: calc(100vh - 80px);
+    }
+
+    .main-footer {
+      background: var(--mystical-gradient);
+      padding: 3rem 0 1rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+      color: var(--muted-gold);
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+      color: var(--moonlight-silver);
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--sage-green);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(184, 148, 95, 0.2);
+      color: var(--sage-green);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+
+  <script>
+    // Cursor sparkle effect
+    document.addEventListener('mousemove', (e) => {
+      if (Math.random() > 0.8) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'cursor-sparkle';
+        sparkle.style.left = e.clientX + 'px';
+        sparkle.style.top = e.clientY + 'px';
+        document.body.appendChild(sparkle);
+        
+        setTimeout(() => {
+          sparkle.remove();
+        }, 600);
+      }
+    });
+
+    // Ambient scroll behavior
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+      
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollPercent = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
+        document.body.style.filter = `hue-rotate(${scrollPercent * 20}deg) saturate(${1 + scrollPercent * 0.2})`;
+      }, 50);
+    });
+  </script>
+</body>
+</html>

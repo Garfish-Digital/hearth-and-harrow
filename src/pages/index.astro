@@ -1,16 +1,487 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Hearth & Harrow - Mystical Supplies for Modern Practitioners">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-background">
+      <div class="mystical-orbs"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Hearth & Harrow</h1>
+        <p class="hero-subtitle">Where Ancient Wisdom Meets Modern Practice</p>
+        <p class="hero-description">
+          Discover authentic tools, sacred herbs, and mystical supplies curated for the discerning practitioner. 
+          Each item carries the whispers of ancient traditions and the power to transform your spiritual journey.
+        </p>
+        <div class="hero-actions">
+          <a href="/shop" class="btn primary">Explore Our Realm</a>
+          <a href="/about" class="btn secondary">Our Story</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Featured Categories -->
+  <section class="featured-categories">
+    <div class="container">
+      <h2 class="section-title">Sacred Collections</h2>
+      <div class="categories-grid">
+        <div class="category-card mystical-card">
+          <div class="card-icon">🌿</div>
+          <h3>Herbs & Resins</h3>
+          <p>Hand-selected botanicals for rituals, spells, and healing practices. Each herb carries centuries of wisdom.</p>
+          <a href="/shop/herbs-resins" class="card-link">Discover More</a>
+        </div>
+        <div class="category-card mystical-card">
+          <div class="card-icon">💎</div>
+          <h3>Crystals & Stones</h3>
+          <p>Powerful crystals and gemstones to amplify your intentions and connect with Earth's ancient energies.</p>
+          <a href="/shop/crystals" class="card-link">Discover More</a>
+        </div>
+        <div class="category-card mystical-card">
+          <div class="card-icon">🔮</div>
+          <h3>Divination Tools</h3>
+          <p>Peer beyond the veil with our collection of tarot decks, runes, pendulums, and scrying mirrors.</p>
+          <a href="/shop/divination" class="card-link">Discover More</a>
+        </div>
+        <div class="category-card mystical-card">
+          <div class="card-icon">🌙</div>
+          <h3>Ritual Wear</h3>
+          <p>Sacred garments and accessories to honor your practice and connect with your inner power.</p>
+          <a href="/shop/ritual-wear" class="card-link">Discover More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview -->
+  <section class="about-preview">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Keepers of Ancient Knowledge</h2>
+          <p>
+            For over two decades, we have been dedicated to preserving and sharing the sacred arts. 
+            Our journey began in a small apothecary, where we learned that true magic lies not in 
+            the tools themselves, but in the intention and wisdom of those who wield them.
+          </p>
+          <p>
+            Every item in our collection is chosen with reverence and respect for the traditions 
+            from which it springs. We believe that authentic practice requires authentic tools, 
+            and we are honored to be your guides on this mystical path.
+          </p>
+          <a href="/about" class="btn">Learn Our Story</a>
+        </div>
+        <div class="about-visual">
+          <div class="mystical-symbol"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <h2>Join Our Circle</h2>
+        <p>Receive moon phase updates, seasonal rituals, and exclusive access to rare items.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email address" required>
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @import '../styles/global.scss';
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--mystical-gradient);
+    z-index: -1;
+  }
+
+  .mystical-orbs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(184, 148, 95, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(156, 174, 124, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 50% 10%, rgba(74, 44, 90, 0.2) 0%, transparent 40%);
+    animation: orbFloat 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes orbFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20px, -10px) scale(1.05); }
+    100% { transform: translate(10px, -15px) scale(0.95); }
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    z-index: 2;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    animation: titleGlow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes titleGlow {
+    0% { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); }
+    100% { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 30px rgba(184, 148, 95, 0.3); }
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--sage-green);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .hero-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    color: var(--parchment);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn.secondary {
+    background: transparent;
+    border: 2px solid var(--muted-gold);
+    color: var(--muted-gold);
+  }
+
+  .btn.secondary:hover {
+    background: var(--muted-gold);
+    color: var(--shadow-black);
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-arrow {
+    width: 2px;
+    height: 30px;
+    background: var(--muted-gold);
+    position: relative;
+  }
+
+  .scroll-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--muted-gold);
+    border-bottom: 2px solid var(--muted-gold);
+    transform: rotate(45deg);
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+  }
+
+  .featured-categories {
+    padding: 6rem 0;
+    background: rgba(26, 26, 26, 0.5);
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 3rem;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .category-card {
+    background: rgba(61, 47, 31, 0.3);
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid rgba(184, 148, 95, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+  }
+
+  .category-card:hover {
+    background: rgba(61, 47, 31, 0.5);
+    border-color: var(--muted-gold);
+  }
+
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 10px rgba(184, 148, 95, 0.3));
+  }
+
+  .card-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: var(--muted-gold);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .card-link:hover {
+    border-bottom-color: var(--muted-gold);
+  }
+
+  .about-preview {
+    padding: 6rem 0;
+    background: var(--earth-gradient);
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-text h2 {
+    margin-bottom: 2rem;
+  }
+
+  .about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .mystical-symbol {
+    width: 200px;
+    height: 200px;
+    border: 3px solid var(--muted-gold);
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+    animation: symbolRotate 30s linear infinite;
+  }
+
+  .mystical-symbol::before,
+  .mystical-symbol::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--sage-green);
+  }
+
+  .mystical-symbol::before {
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+  }
+
+  .mystical-symbol::after {
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+  }
+
+  @keyframes symbolRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .newsletter {
+    padding: 4rem 0;
+    background: rgba(74, 44, 90, 0.2);
+  }
+
+  .newsletter-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .newsletter-content h2 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+  }
+
+  .newsletter-content p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    background: rgba(26, 26, 26, 0.7);
+    border: 1px solid rgba(184, 148, 95, 0.3);
+    border-radius: 30px;
+    color: var(--moonlight-silver);
+    font-size: 1rem;
+  }
+
+  .newsletter-form input:focus {
+    outline: none;
+    border-color: var(--muted-gold);
+    box-shadow: 0 0 10px rgba(184, 148, 95, 0.2);
+  }
+
+  .newsletter-form input::placeholder {
+    color: var(--sage-green);
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  // Newsletter form handling
+  document.querySelector('.newsletter-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Create mystical popup
+    const popup = document.createElement('div');
+    popup.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #2d5016, #1a2b3d);
+        padding: 3rem;
+        border-radius: 15px;
+        border: 2px solid #b8945f;
+        color: #e8e8e8;
+        text-align: center;
+        z-index: 10000;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        max-width: 400px;
+        animation: mysticalAppear 0.5s ease-out;
+      ">
+        <h3 style="color: #b8945f; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">
+          ✨ Welcome to Our Circle ✨
+        </h3>
+        <p style="margin-bottom: 2rem; line-height: 1.6;">
+          Your subscription to our mystical newsletter has been received. 
+          May wisdom and wonder find their way to your inbox.
+        </p>
+        <button onclick="this.parentElement.parentElement.remove()" style="
+          background: #b8945f;
+          color: #1a1a1a;
+          border: none;
+          padding: 0.75rem 2rem;
+          border-radius: 30px;
+          cursor: pointer;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        ">
+          Blessed Be
+        </button>
+      </div>
+      <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+      " onclick="this.parentElement.remove()"></div>
+    `;
+    
+    document.body.appendChild(popup);
+    
+    // Reset form
+    e.target.reset();
+  });
+
+  // Add mystical appear animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes mysticalAppear {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+</script>

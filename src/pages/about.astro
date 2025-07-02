@@ -1,0 +1,413 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About Us - Hearth & Harrow" description="Learn about the keepers of ancient wisdom at Hearth & Harrow">
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Keepers of Ancient Wisdom</h1>
+        <p>Our journey through the sacred arts spans over two decades</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="our-story">
+    <div class="container">
+      <div class="story-content">
+        <div class="story-text">
+          <h2>The Beginning</h2>
+          <p>
+            In the heart of an old university town, nestled between dusty bookshops and antique stores, 
+            our story began in a small apothecary that had served the community for generations. It was there, 
+            among the weathered shelves lined with mason jars of dried herbs and curious trinkets, that we 
+            first encountered the profound connection between intention and practice.
+          </p>
+          <p>
+            What started as a fascination with the healing properties of plants evolved into a deeper understanding 
+            of the sacred traditions that have guided humanity for millennia. We learned that authentic practice 
+            requires not just knowledge, but tools that carry the weight of genuine tradition and craftsmanship.
+          </p>
+        </div>
+        <div class="story-visual">
+          <div class="mystical-pattern"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Philosophy -->
+  <section class="philosophy">
+    <div class="container">
+      <div class="philosophy-grid">
+        <div class="philosophy-card mystical-card">
+          <div class="card-icon">🌱</div>
+          <h3>Authenticity First</h3>
+          <p>Every item in our collection is sourced with respect for traditional practices and sustainable methods. We believe that authentic tools carry the energy of their origins.</p>
+        </div>
+        <div class="philosophy-card mystical-card">
+          <div class="card-icon">🤝</div>
+          <h3>Community & Respect</h3>
+          <p>We honor the diverse traditions from which our practices spring, fostering a community built on mutual respect and shared wisdom.</p>
+        </div>
+        <div class="philosophy-card mystical-card">
+          <div class="card-icon">📚</div>
+          <h3>Knowledge Sharing</h3>
+          <p>True wisdom grows when shared. We provide not just tools, but guidance and education to support your spiritual journey.</p>
+        </div>
+        <div class="philosophy-card mystical-card">
+          <div class="card-icon">🌍</div>
+          <h3>Earth Connection</h3>
+          <p>Our practices are rooted in respect for the natural world. We source responsibly and support conservation efforts worldwide.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet the Team -->
+  <section class="team">
+    <div class="container">
+      <h2>The Circle</h2>
+      <div class="team-grid">
+        <div class="team-member mystical-card">
+          <div class="member-avatar">
+            <div class="avatar-placeholder keeper1"></div>
+          </div>
+          <h3>Sage Moonweaver</h3>
+          <p class="member-role">Herbalist & Founder</p>
+          <p>With over 25 years of experience in botanical healing, Sage curates our herb and resin collection with profound knowledge of traditional uses and sustainable sourcing.</p>
+        </div>
+        <div class="team-member mystical-card">
+          <div class="member-avatar">
+            <div class="avatar-placeholder keeper2"></div>
+          </div>
+          <h3>Crystal Stormwright</h3>
+          <p class="member-role">Stone Keeper</p>
+          <p>A master of crystalline energies, Crystal travels the world to source our gemstone collection, ensuring each piece carries the pure essence of Earth's ancient wisdom.</p>
+        </div>
+        <div class="team-member mystical-card">
+          <div class="member-avatar">
+            <div class="avatar-placeholder keeper3"></div>
+          </div>
+          <h3>Raven Starseeker</h3>
+          <p class="member-role">Divination Master</p>
+          <p>Skilled in multiple divination traditions, Raven selects our tarot decks, runes, and scrying tools with an intuitive understanding of their divinatory potential.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Promise -->
+  <section class="promise">
+    <div class="container">
+      <div class="promise-content">
+        <h2>Our Sacred Promise</h2>
+        <div class="promise-text">
+          <p>
+            We pledge to honor the ancient traditions that guide our work while embracing the evolving needs 
+            of modern practitioners. Every item we offer has been chosen with reverence, tested with intention, 
+            and blessed with the hope that it will serve you well on your spiritual path.
+          </p>
+          <p>
+            Whether you are taking your first steps into the mystical arts or deepening a lifelong practice, 
+            we are here to support your journey with authentic tools, genuine wisdom, and a community that 
+            celebrates the sacred in the everyday.
+          </p>
+          <div class="signature">
+            <p><em>Blessed be,</em></p>
+            <p><strong>The Hearth & Harrow Circle</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @import '../styles/global.scss';
+
+  .about-hero {
+    padding: 8rem 0 4rem;
+    background: var(--earth-gradient);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 30% 70%, rgba(184, 148, 95, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 70% 30%, rgba(156, 174, 124, 0.1) 0%, transparent 50%);
+    animation: mysticalShift 25s ease-in-out infinite alternate;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content p {
+    font-size: 1.3rem;
+    color: var(--sage-green);
+    font-style: italic;
+  }
+
+  .our-story {
+    padding: 6rem 0;
+    background: rgba(26, 26, 26, 0.3);
+  }
+
+  .story-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .story-text h2 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+
+  .story-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .mystical-pattern {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    position: relative;
+    border: 3px solid var(--muted-gold);
+    border-radius: 50%;
+    animation: symbolRotate 40s linear infinite;
+  }
+
+  .mystical-pattern::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    border: 2px solid var(--sage-green);
+    border-radius: 50%;
+    animation: symbolRotate 30s linear infinite reverse;
+  }
+
+  .mystical-pattern::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    border: 2px solid var(--rich-purple);
+    border-radius: 50%;
+    animation: symbolRotate 20s linear infinite;
+  }
+
+  .philosophy {
+    padding: 6rem 0;
+    background: var(--mystical-gradient);
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .philosophy-card {
+    background: rgba(26, 26, 26, 0.7);
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid rgba(184, 148, 95, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .philosophy-card .card-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(184, 148, 95, 0.3));
+  }
+
+  .philosophy-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .philosophy-card p {
+    line-height: 1.7;
+    color: var(--moonlight-silver);
+  }
+
+  .team {
+    padding: 6rem 0;
+    background: rgba(61, 47, 31, 0.2);
+  }
+
+  .team h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 3rem;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+  }
+
+  .team-member {
+    background: rgba(26, 26, 26, 0.5);
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid rgba(184, 148, 95, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .member-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--muted-gold);
+  }
+
+  .avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--moonlight-silver);
+  }
+
+  .keeper1 {
+    background: linear-gradient(135deg, var(--forest-green), var(--sage-green));
+  }
+
+  .keeper2 {
+    background: linear-gradient(135deg, var(--rich-purple), #8a5aa8);
+  }
+
+  .keeper3 {
+    background: linear-gradient(135deg, var(--deep-forest-blue), var(--natural-wood));
+  }
+
+  .avatar-placeholder::before {
+    content: '🧙‍♀️';
+  }
+
+  .keeper2 .avatar-placeholder::before {
+    content: '🔮';
+  }
+
+  .keeper3 .avatar-placeholder::before {
+    content: '🌟';
+  }
+
+  .team-member h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .member-role {
+    color: var(--sage-green);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .team-member p:last-child {
+    line-height: 1.7;
+    color: var(--moonlight-silver);
+  }
+
+  .promise {
+    padding: 6rem 0;
+    background: var(--earth-gradient);
+  }
+
+  .promise-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .promise-content h2 {
+    margin-bottom: 3rem;
+    font-size: 3rem;
+  }
+
+  .promise-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .signature {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(184, 148, 95, 0.3);
+  }
+
+  .signature p:first-child {
+    font-size: 1.1rem;
+    color: var(--sage-green);
+    margin-bottom: 0.5rem;
+  }
+
+  .signature p:last-child {
+    font-size: 1.3rem;
+    color: var(--muted-gold);
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+
+    .story-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .philosophy-grid,
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .team h2,
+    .promise-content h2 {
+      font-size: 2.5rem;
+    }
+  }
+</style>

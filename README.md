@@ -1,14 +1,18 @@
-# Astro Starter Kit: Minimal
+# Hearth & Harrow ✨
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A mystical e-commerce demo site built with Astro, showcasing a Pagan & Occult supplies store.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## 🔮 About This Demo
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Hearth & Harrow is a fictional e-commerce site designed to demonstrate modern web development techniques with a mystical aesthetic. The site features:
+
+- **Mystical Design**: Dark theme with earthy colors, mystical animations, and ethereal effects
+- **Interactive Elements**: Cursor sparkle effects, subtle rotations, and ambient scroll behaviors  
+- **E-commerce Features**: Product catalog, shopping cart with popup notifications
+- **Performance Optimized**: Built with Astro for fast loading and minimal JavaScript
+- **Responsive Design**: Works beautifully on all device sizes
+
+**Live Demo**: [hearthandharrow.netlify.app](https://hearthandharrow.netlify.app)
 
 ## 🚀 Project Structure
 

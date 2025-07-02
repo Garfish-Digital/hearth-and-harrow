@@ -1,0 +1,718 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Shop - Hearth & Harrow" description="Explore our mystical collections of herbs, crystals, divination tools, and ritual wear">
+  <!-- Hero Section -->
+  <section class="shop-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Sacred Marketplace</h1>
+        <p>Discover authentic tools and supplies for your spiritual practice</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Grid -->
+  <section class="shop-categories">
+    <div class="container">
+      <div class="categories-grid">
+        <a href="/shop/herbs-resins" class="category-card mystical-card large-card">
+          <div class="card-background herbs-bg"></div>
+          <div class="card-content">
+            <div class="card-icon">🌿</div>
+            <h2>Herbs & Resins</h2>
+            <p>Sacred botanicals for rituals, spells, and healing</p>
+            <span class="item-count">50+ Items</span>
+          </div>
+        </a>
+
+        <a href="/shop/crystals" class="category-card mystical-card large-card">
+          <div class="card-background crystals-bg"></div>
+          <div class="card-content">
+            <div class="card-icon">💎</div>
+            <h2>Crystals & Stones</h2>
+            <p>Earth's ancient energies crystallized</p>
+            <span class="item-count">75+ Items</span>
+          </div>
+        </a>
+
+        <a href="/shop/divination" class="category-card mystical-card large-card">
+          <div class="card-background divination-bg"></div>
+          <div class="card-content">
+            <div class="card-icon">🔮</div>
+            <h2>Divination Tools</h2>
+            <p>Peer beyond the veil of the unknown</p>
+            <span class="item-count">40+ Items</span>
+          </div>
+        </a>
+
+        <a href="/shop/ritual-wear" class="category-card mystical-card large-card">
+          <div class="card-background ritual-bg"></div>
+          <div class="card-content">
+            <div class="card-icon">🌙</div>
+            <h2>Ritual Wear</h2>
+            <p>Sacred garments for ceremony and practice</p>
+            <span class="item-count">30+ Items</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="featured-products">
+    <div class="container">
+      <h2>Featured Treasures</h2>
+      <div class="products-grid">
+        <div class="product-card mystical-card">
+          <div class="product-image">
+            <div class="product-placeholder sage-placeholder"></div>
+          </div>
+          <div class="product-info">
+            <h3>White Sage Bundle</h3>
+            <p class="product-category">Herbs & Resins</p>
+            <p class="product-price">$12.99</p>
+            <button class="add-to-cart-btn" data-product="White Sage Bundle" data-price="12.99">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card mystical-card">
+          <div class="product-image">
+            <div class="product-placeholder amethyst-placeholder"></div>
+          </div>
+          <div class="product-info">
+            <h3>Amethyst Cluster</h3>
+            <p class="product-category">Crystals</p>
+            <p class="product-price">$24.99</p>
+            <button class="add-to-cart-btn" data-product="Amethyst Cluster" data-price="24.99">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card mystical-card">
+          <div class="product-image">
+            <div class="product-placeholder tarot-placeholder"></div>
+          </div>
+          <div class="product-info">
+            <h3>Rider-Waite Tarot Deck</h3>
+            <p class="product-category">Divination</p>
+            <p class="product-price">$19.99</p>
+            <button class="add-to-cart-btn" data-product="Rider-Waite Tarot Deck" data-price="19.99">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card mystical-card">
+          <div class="product-image">
+            <div class="product-placeholder pendant-placeholder"></div>
+          </div>
+          <div class="product-info">
+            <h3>Pentagram Pendant</h3>
+            <p class="product-category">Ritual Wear</p>
+            <p class="product-price">$34.99</p>
+            <button class="add-to-cart-btn" data-product="Pentagram Pendant" data-price="34.99">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card mystical-card">
+          <div class="product-image">
+            <div class="product-placeholder frankincense-placeholder"></div>
+          </div>
+          <div class="product-info">
+            <h3>Frankincense Resin</h3>
+            <p class="product-category">Herbs & Resins</p>
+            <p class="product-price">$16.99</p>
+            <button class="add-to-cart-btn" data-product="Frankincense Resin" data-price="16.99">Add to Cart</button>
+          </div>
+        </div>
+
+        <div class="product-card mystical-card">
+          <div class="product-image">
+            <div class="product-placeholder quartz-placeholder"></div>
+          </div>
+          <div class="product-info">
+            <h3>Clear Quartz Point</h3>
+            <p class="product-category">Crystals</p>
+            <p class="product-price">$18.99</p>
+            <button class="add-to-cart-btn" data-product="Clear Quartz Point" data-price="18.99">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shopping Cart -->
+  <div id="shopping-cart" class="shopping-cart">
+    <div class="cart-header">
+      <h3>Sacred Cart</h3>
+      <button id="close-cart" class="close-cart">×</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <p class="empty-cart">Your cart is empty</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <strong>Total: $<span id="cart-total">0.00</span></strong>
+      </div>
+      <button id="checkout-btn" class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Cart Toggle Button -->
+  <button id="cart-toggle" class="cart-toggle">
+    🛒 <span id="cart-count">0</span>
+  </button>
+</BaseLayout>
+
+<style lang="scss">
+  @import '../styles/global.scss';
+
+  .shop-hero {
+    padding: 8rem 0 4rem;
+    background: var(--mystical-gradient);
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content p {
+    font-size: 1.3rem;
+    color: var(--sage-green);
+  }
+
+  .shop-categories {
+    padding: 6rem 0;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .large-card {
+    position: relative;
+    min-height: 300px;
+    padding: 3rem;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .large-card:hover {
+    color: inherit;
+  }
+
+  .card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    transition: opacity 0.3s ease;
+  }
+
+  .large-card:hover .card-background {
+    opacity: 0.2;
+  }
+
+  .herbs-bg {
+    background: radial-gradient(circle, var(--forest-green), transparent);
+  }
+
+  .crystals-bg {
+    background: radial-gradient(circle, var(--rich-purple), transparent);
+  }
+
+  .divination-bg {
+    background: radial-gradient(circle, var(--deep-forest-blue), transparent);
+  }
+
+  .ritual-bg {
+    background: radial-gradient(circle, var(--muted-gold), transparent);
+  }
+
+  .card-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .card-content .card-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .card-content h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  .card-content p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .item-count {
+    color: var(--muted-gold);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .featured-products {
+    padding: 6rem 0;
+    background: rgba(26, 26, 26, 0.3);
+  }
+
+  .featured-products h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 3rem;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .product-card {
+    background: rgba(61, 47, 31, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(184, 148, 95, 0.2);
+    transition: all 0.4s ease;
+  }
+
+  .product-card:hover {
+    border-color: var(--muted-gold);
+    transform: translateY(-5px);
+  }
+
+  .product-image {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--muted-gold);
+    position: relative;
+  }
+
+  .sage-placeholder {
+    background: linear-gradient(45deg, var(--forest-green), var(--sage-green));
+  }
+
+  .amethyst-placeholder {
+    background: linear-gradient(45deg, var(--rich-purple), #8a5aa8);
+  }
+
+  .tarot-placeholder {
+    background: linear-gradient(45deg, var(--deep-forest-blue), var(--rich-purple));
+  }
+
+  .pendant-placeholder {
+    background: linear-gradient(45deg, var(--muted-gold), var(--natural-wood));
+  }
+
+  .frankincense-placeholder {
+    background: linear-gradient(45deg, var(--earth-brown), var(--natural-wood));
+  }
+
+  .quartz-placeholder {
+    background: linear-gradient(45deg, #ffffff20, var(--moonlight-silver));
+  }
+
+  .product-info {
+    padding: 1.5rem;
+  }
+
+  .product-info h3 {
+    margin-bottom: 0.5rem;
+    color: var(--muted-gold);
+    font-size: 1.3rem;
+  }
+
+  .product-category {
+    color: var(--sage-green);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .product-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--muted-gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--ethereal-gradient);
+    color: var(--moonlight-silver);
+    border: none;
+    border-radius: 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .add-to-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(184, 148, 95, 0.3);
+  }
+
+  // Shopping Cart Styles
+  .shopping-cart {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: var(--mystical-gradient);
+    border-left: 2px solid var(--muted-gold);
+    z-index: 2000;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shopping-cart.open {
+    right: 0;
+  }
+
+  .cart-header {
+    padding: 2rem;
+    border-bottom: 1px solid rgba(184, 148, 95, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cart-header h3 {
+    color: var(--muted-gold);
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+  }
+
+  .close-cart {
+    background: none;
+    border: none;
+    color: var(--muted-gold);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .cart-items {
+    flex: 1;
+    padding: 1rem 2rem;
+    overflow-y: auto;
+  }
+
+  .empty-cart {
+    text-align: center;
+    color: var(--sage-green);
+    font-style: italic;
+    margin-top: 2rem;
+  }
+
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(184, 148, 95, 0.2);
+  }
+
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+
+  .item-info h4 {
+    color: var(--muted-gold);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .item-price {
+    color: var(--sage-green);
+    font-weight: 500;
+  }
+
+  .remove-item {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+  }
+
+  .cart-footer {
+    padding: 2rem;
+    border-top: 1px solid rgba(184, 148, 95, 0.3);
+  }
+
+  .cart-total {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--muted-gold);
+  }
+
+  .checkout-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--ethereal-gradient);
+    color: var(--moonlight-silver);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(184, 148, 95, 0.3);
+  }
+
+  .cart-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--ethereal-gradient);
+    color: var(--moonlight-silver);
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .cart-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(184, 148, 95, 0.4);
+  }
+
+  #cart-count {
+    background: #ff6b6b;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+  }
+
+  @media (max-width: 768px) {
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .products-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .shopping-cart {
+      width: 100%;
+      right: -100%;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Shopping Cart Functionality
+  let cart = [];
+  let cartTotal = 0;
+
+  function updateCartDisplay() {
+    const cartItems = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
+    const cartTotalElement = document.getElementById('cart-total');
+
+    if (cart.length === 0) {
+      cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
+      cartCount.textContent = '0';
+      cartTotalElement.textContent = '0.00';
+    } else {
+      cartItems.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+          <div class="item-info">
+            <h4>${item.name}</h4>
+            <p class="item-price">$${item.price}</p>
+          </div>
+          <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+        </div>
+      `).join('');
+      
+      cartCount.textContent = cart.length.toString();
+      cartTotalElement.textContent = cartTotal.toFixed(2);
+    }
+  }
+
+  function addToCart(productName, price) {
+    cart.push({ name: productName, price: parseFloat(price) });
+    cartTotal += parseFloat(price);
+    updateCartDisplay();
+    
+    // Show cart briefly
+    const cartElement = document.getElementById('shopping-cart');
+    cartElement.classList.add('open');
+    setTimeout(() => {
+      if (!cartElement.matches(':hover')) {
+        cartElement.classList.remove('open');
+      }
+    }, 2000);
+  }
+
+  function removeFromCart(index) {
+    cartTotal -= cart[index].price;
+    cart.splice(index, 1);
+    updateCartDisplay();
+  }
+
+  // Event Listeners
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add to cart buttons
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const productName = e.target.getAttribute('data-product');
+        const price = e.target.getAttribute('data-price');
+        addToCart(productName, price);
+      });
+    });
+
+    // Cart toggle
+    document.getElementById('cart-toggle').addEventListener('click', () => {
+      document.getElementById('shopping-cart').classList.toggle('open');
+    });
+
+    // Close cart
+    document.getElementById('close-cart').addEventListener('click', () => {
+      document.getElementById('shopping-cart').classList.remove('open');
+    });
+
+    // Checkout button
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+
+      // Create mystical checkout popup
+      const popup = document.createElement('div');
+      popup.innerHTML = `
+        <div style="
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: linear-gradient(135deg, #2d5016, #1a2b3d);
+          padding: 3rem;
+          border-radius: 15px;
+          border: 2px solid #b8945f;
+          color: #e8e8e8;
+          text-align: center;
+          z-index: 10000;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+          max-width: 500px;
+          animation: mysticalAppear 0.5s ease-out;
+        ">
+          <h3 style="color: #b8945f; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">
+            🌟 Order Received 🌟
+          </h3>
+          <p style="margin-bottom: 1rem; line-height: 1.6;">
+            Your mystical order of ${cart.length} item(s) totaling $${cartTotal.toFixed(2)} has been received by the cosmic forces.
+          </p>
+          <p style="margin-bottom: 2rem; line-height: 1.6; font-style: italic; color: #9cae7c;">
+            In a real store, this would process your payment and arrange shipping. 
+            For now, simply know that your spiritual journey is supported by our authentic offerings.
+          </p>
+          <button onclick="this.parentElement.parentElement.remove(); cart = []; cartTotal = 0; updateCartDisplay(); document.getElementById('shopping-cart').classList.remove('open');" style="
+            background: #b8945f;
+            color: #1a1a1a;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          ">
+            Continue Shopping
+          </button>
+        </div>
+        <div style="
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.7);
+          z-index: 9999;
+        " onclick="this.parentElement.remove()"></div>
+      `;
+      
+      document.body.appendChild(popup);
+    });
+  });
+
+  // Add mystical appear animation if not already present
+  if (!document.querySelector('#mystical-animation-styles')) {
+    const style = document.createElement('style');
+    style.id = 'mystical-animation-styles';
+    style.textContent = `
+      @keyframes mysticalAppear {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+</script>
