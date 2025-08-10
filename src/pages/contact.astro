@@ -19,7 +19,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="contact-grid">
         <!-- Contact Form -->
         <div class="contact-form-section">
-          <h2>Send Us a Message</h2>
+          <h2 class="scroll-animate" data-animation="bounceInUp" data-delay="0">Send Us a Message</h2>
           <p class="form-intro">
             Whether you seek guidance, have questions about our offerings, or wish to share your own wisdom, 
             we are here to listen. Every message is received with reverence and answered with care.
@@ -59,7 +59,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Contact Info -->
         <div class="contact-info-section">
-          <div class="info-card mystical-card">
+          <div class="info-card mystical-card scroll-animate" data-animation="rubberBand" data-delay="0">
             <h3>Our Sacred Space</h3>
             <div class="info-item">
               <div class="info-icon">📍</div>
@@ -86,7 +86,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
 
-          <div class="hours-card mystical-card">
+          <div class="hours-card mystical-card scroll-animate" data-animation="rubberBand" data-delay="350">
             <h3>Circle Hours</h3>
             <div class="hours-list">
               <div class="hours-item">
@@ -111,7 +111,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
 
-          <div class="social-card mystical-card">
+          <div class="social-card mystical-card scroll-animate" data-animation="rubberBand" data-delay="700">
             <h3>Follow Our Journey</h3>
             <p>Connect with our community and stay updated on lunar cycles, seasonal rituals, and new arrivals.</p>
             <div class="social-links">
@@ -129,24 +129,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- FAQ Section -->
   <section class="faq-section">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
+      <h2 class="scroll-animate" data-animation="bounceInUp" data-delay="0">Frequently Asked Questions</h2>
       <div class="faq-grid">
-        <div class="faq-item mystical-card">
-          <h3>Do you offer spiritual guidance?</h3>
-          <p>While we provide tools and resources, we encourage you to seek guidance from qualified practitioners in your area. We're happy to recommend trusted mentors within our network.</p>
-        </div>
         
-        <div class="faq-item mystical-card">
+        <div class="faq-item mystical-card scroll-animate" data-animation="rubberBand" data-delay="0">
           <h3>Are your products ethically sourced?</h3>
           <p>Absolutely. We work directly with sustainable suppliers and indigenous communities, ensuring fair compensation and environmental responsibility in all our sourcing practices.</p>
         </div>
         
-        <div class="faq-item mystical-card">
+        <div class="faq-item mystical-card scroll-animate" data-animation="rubberBand" data-delay="350">
           <h3>Do you ship internationally?</h3>
           <p>Yes, we ship worldwide! However, please note that certain herbs and materials may be restricted in some countries. We'll verify regulations before processing international orders.</p>
         </div>
         
-        <div class="faq-item mystical-card">
+        <div class="faq-item mystical-card scroll-animate" data-animation="rubberBand" data-delay="700">
           <h3>Can I return items if they don't resonate with me?</h3>
           <p>We understand that spiritual tools must align with your energy. We offer a 30-day return policy for unused items in their original condition.</p>
         </div>
@@ -160,23 +156,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .contact-hero {
     padding: 8rem 0 4rem;
-    background: var(--mystical-gradient);
+    background: var(--pure-white);
     text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(circle at 20% 80%, rgba(184, 148, 95, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(74, 44, 90, 0.15) 0%, transparent 50%);
-    animation: mysticalShift 20s ease-in-out infinite alternate;
   }
 
   .hero-content {

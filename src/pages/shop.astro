@@ -43,14 +43,14 @@ const categories = productsData.categories;
   <!-- Featured Products -->
   <section class="featured-products">
     <div class="container">
-      <h2>Featured Treasures</h2>
+      <h2 class="scroll-animate" data-animation="bounceInUp" data-delay="0">Featured Treasures</h2>
       
       <!-- Filter Buttons -->
       <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">All Products</button>
-        <button class="filter-btn" data-filter="herbs-resins">🌿 Herbs & Resins</button>
-        <button class="filter-btn" data-filter="crystals">💎 Crystals</button>
-        <button class="filter-btn" data-filter="divination">🔮 Divination</button>
+        <button class="filter-btn active scroll-animate" data-filter="all" data-animation="bounceInLeft" data-delay="0">All Products</button>
+        <button class="filter-btn scroll-animate" data-filter="herbs-resins" data-animation="bounceInLeft" data-delay="350">Herbs & Resins</button>
+        <button class="filter-btn scroll-animate" data-filter="crystals" data-animation="bounceInRight" data-delay="0">Crystals</button>
+        <button class="filter-btn scroll-animate" data-filter="divination" data-animation="bounceInRight" data-delay="350">Divination</button>
       </div>
 
       <!-- Products Bento Grid -->
@@ -133,7 +133,9 @@ const categories = productsData.categories;
     padding: 3rem;
     overflow: hidden;
     text-decoration: none;
-    color: inherit;
+    color: var(--pure-white);
+    background: var(--crayola-purple);
+    border-radius: 15px;
   }
 
   .large-card:hover {
@@ -184,6 +186,11 @@ const categories = productsData.categories;
   .card-content h2 {
     margin-bottom: 1rem;
     font-size: 2rem;
+    color: var(--pure-white) !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: var(--pure-white) !important;
+    background-clip: initial !important;
   }
 
   .card-content p {
@@ -202,13 +209,18 @@ const categories = productsData.categories;
 
   .featured-products {
     padding: 6rem 0;
-    background: rgba(26, 26, 26, 0.3);
+    background: var(--crayola-purple);
   }
 
   .featured-products h2 {
     text-align: center;
     margin-bottom: 4rem;
     font-size: 3rem;
+    color: var(--pure-white) !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: var(--pure-white) !important;
+    background-clip: initial !important;
   }
 
   // Filter Buttons
@@ -223,8 +235,8 @@ const categories = productsData.categories;
   .filter-btn {
     padding: 0.75rem 1.5rem;
     background: transparent;
-    border: 2px solid var(--crayola-purple);
-    color: var(--crayola-purple);
+    border: 2px solid var(--crayola-orange);
+    color: var(--light-gray);
     border-radius: 50px;
     font-weight: 500;
     cursor: pointer;
@@ -234,7 +246,7 @@ const categories = productsData.categories;
 
   .filter-btn:hover,
   .filter-btn.active {
-    background: var(--crayola-purple);
+    background: var(--crayola-orange);
     color: var(--pure-white);
     transform: translateY(-2px);
   }

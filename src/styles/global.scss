@@ -15,6 +15,9 @@
   --peaceful-green: #86EFAC;      // Light Green
   --peaceful-orange: #FDBA74;     // Light Orange
   --peaceful-purple: #c4b5fd;     // Light Purple
+
+  // Transparetnt Variants - Gentle & Subtle
+  --ethereal-gradient: rgb(134, 239, 172, .8); // Light green
   
   // Neutral Colors - Clean & Bright
   --pure-white: #FFFFFF;
@@ -454,4 +457,120 @@ a:hover {
 @keyframes gentleBounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
+}
+
+// Scroll Animation System - Global Implementation
+.scroll-animate {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+
+  &.animate {
+    opacity: 1;
+  }
+
+  // Gentle bounce animations
+  &.animate.animate__bounceInUp {
+    animation: gentleBounceInUp 1s ease-out forwards;
+  }
+
+  &.animate.animate__bounceInLeft {
+    animation: gentleBounceInLeft 1s ease-out forwards;
+  }
+
+  &.animate.animate__bounceInRight {
+    animation: gentleBounceInRight 1s ease-out forwards;
+  }
+
+  &.animate.animate__rubberBand {
+    animation: gentleRubberBand 1.2s ease-out forwards;
+  }
+}
+
+// Gentle Animation Keyframes
+@keyframes gentleBounceInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 60px, 0);
+  }
+  25% {
+    opacity: 0.7;
+    transform: translate3d(0, -10px, 0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate3d(0, 5px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes gentleBounceInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-60px, 0, 0);
+  }
+  25% {
+    opacity: 0.7;
+    transform: translate3d(10px, 0, 0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate3d(-5px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes gentleBounceInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(60px, 0, 0);
+  }
+  25% {
+    opacity: 0.7;
+    transform: translate3d(-10px, 0, 0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate3d(5px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes gentleRubberBand {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  15% {
+    opacity: 0.3;
+    transform: translate3d(-5px, 15px, 0);
+  }
+  30% {
+    opacity: 0.6;
+    transform: translate3d(5px, 10px, 0);
+  }
+  45% {
+    opacity: 0.8;
+    transform: translate3d(-3px, 5px, 0);
+  }
+  60% {
+    opacity: 0.9;
+    transform: translate3d(2px, 2px, 0);
+  }
+  75% {
+    opacity: 0.95;
+    transform: translate3d(-1px, 1px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
