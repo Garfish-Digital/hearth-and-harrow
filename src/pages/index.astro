@@ -17,8 +17,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Each item carries the whispers of ancient traditions and the power to transform your spiritual journey.
         </p>
         <div class="hero-actions">
-          <a href="/shop" class="btn primary">Explore Our Realm</a>
-          <a href="/about" class="btn secondary">Our Story</a>
+          <a href="/shop" class="btn btn-green scroll-animate" data-animation="bounceInLeft" data-delay="0">Explore Our Realm</a>
+          <a href="/about" class="btn btn-orange scroll-animate" data-animation="bounceInRight" data-delay="350">Our Story</a>
         </div>
       </div>
     </div>
@@ -30,31 +30,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- Featured Categories -->
   <section class="featured-categories">
     <div class="container">
-      <h2 class="section-title">Sacred Collections</h2>
+      <h2 class="section-title scroll-animate" data-animation="bounceInUp" data-delay="0">Sacred Collections</h2>
       <div class="categories-grid">
-        <div class="category-card mystical-card">
+        <div class="category-card mystical-card scroll-animate" data-animation="rubberBand" data-delay="0">
           <div class="card-icon">🌿</div>
           <h3>Herbs & Resins</h3>
           <p>Hand-selected botanicals for rituals, spells, and healing practices. Each herb carries centuries of wisdom.</p>
           <a href="/shop/herbs-resins" class="card-link">Discover More</a>
         </div>
-        <div class="category-card mystical-card">
+        <div class="category-card mystical-card scroll-animate" data-animation="rubberBand" data-delay="700">
           <div class="card-icon">💎</div>
           <h3>Crystals & Stones</h3>
           <p>Powerful crystals and gemstones to amplify your intentions and connect with Earth's ancient energies.</p>
           <a href="/shop/crystals" class="card-link">Discover More</a>
         </div>
-        <div class="category-card mystical-card">
+        <div class="category-card mystical-card scroll-animate" data-animation="rubberBand" data-delay="350">
           <div class="card-icon">🔮</div>
           <h3>Divination Tools</h3>
           <p>Peer beyond the veil with our collection of tarot decks, runes, pendulums, and scrying mirrors.</p>
           <a href="/shop/divination" class="card-link">Discover More</a>
-        </div>
-        <div class="category-card mystical-card">
-          <div class="card-icon">🌙</div>
-          <h3>Ritual Wear</h3>
-          <p>Sacred garments and accessories to honor your practice and connect with your inner power.</p>
-          <a href="/shop/ritual-wear" class="card-link">Discover More</a>
         </div>
       </div>
     </div>
@@ -65,7 +59,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="about-content">
         <div class="about-text">
-          <h2>Keepers of Ancient Knowledge</h2>
+          <h2 class="scroll-animate" data-animation="bounceInRight" data-delay="0">Keepers of Ancient Knowledge</h2>
           <p>
             For over two decades, we have been dedicated to preserving and sharing the sacred arts. 
             Our journey began in a small apothecary, where we learned that true magic lies not in 
@@ -76,7 +70,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             from which it springs. We believe that authentic practice requires authentic tools, 
             and we are honored to be your guides on this mystical path.
           </p>
-          <a href="/about" class="btn">Learn Our Story</a>
+          <a href="/about" class="btn btn-orange scroll-animate" data-animation="bounceInLeft" data-delay="0">Learn Our Story</a>
         </div>
         <div class="about-visual">
           <div class="mystical-symbol"></div>
@@ -89,11 +83,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="newsletter">
     <div class="container">
       <div class="newsletter-content">
-        <h2>Join Our Circle</h2>
+        <h2 class="scroll-animate" data-animation="bounceInUp" data-delay="0">Join Our Circle</h2>
         <p>Receive moon phase updates, seasonal rituals, and exclusive access to rare items.</p>
         <form class="newsletter-form">
-          <input type="email" placeholder="Enter your email address" required>
-          <button type="submit" class="btn">Subscribe</button>
+          <input type="email" placeholder="Enter your email address" required class="scroll-animate" data-animation="bounceInLeft" data-delay="0">
+          <button type="submit" class="btn btn-green scroll-animate" data-animation="bounceInRight" data-delay="350">Subscribe</button>
         </form>
       </div>
     </div>
@@ -118,19 +112,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--mystical-gradient);
+    // background: var(--mystical-gradient);
     z-index: -1;
   }
 
   .mystical-orbs {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(circle at 25% 25%, rgba(184, 148, 95, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(156, 174, 124, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 50% 10%, rgba(74, 44, 90, 0.2) 0%, transparent 40%);
-    animation: orbFloat 20s ease-in-out infinite alternate;
+    display: none;
   }
 
   @keyframes orbFloat {
@@ -148,6 +135,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .hero-title {
     font-size: 4.5rem;
     margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--crayola-purple), var(--peaceful-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
     animation: titleGlow 3s ease-in-out infinite alternate;
   }
@@ -178,15 +169,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     flex-wrap: wrap;
   }
 
-  .btn.secondary {
-    background: transparent;
-    border: 2px solid var(--muted-gold);
-    color: var(--muted-gold);
+  .btn-green {
+    background: var(--crayola-green);
+    color: var(--pure-white);
   }
 
-  .btn.secondary:hover {
-    background: var(--muted-gold);
-    color: var(--shadow-black);
+  .btn-green:hover {
+    background: var(--peaceful-green);
+    color: var(--text-gray);
+  }
+
+  .btn-orange {
+    background: var(--crayola-orange);
+    color: var(--pure-white);
+  }
+
+  .btn-orange:hover {
+    background: var(--peaceful-orange);
+    color: var(--text-gray);
   }
 
   .scroll-indicator {
@@ -224,13 +224,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .featured-categories {
     padding: 6rem 0;
-    background: rgba(26, 26, 26, 0.5);
+    background: var(--crayola-purple);
   }
 
   .section-title {
     text-align: center;
     margin-bottom: 4rem;
     font-size: 3rem;
+  }
+
+  .featured-categories .section-title {
+    color: var(--pure-white) !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: var(--pure-white) !important;
+    background-clip: initial !important;
   }
 
   .categories-grid {
@@ -240,18 +248,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .category-card {
-    background: rgba(61, 47, 31, 0.3);
+    background: var(--pure-white);
     padding: 2.5rem;
     border-radius: 15px;
     text-align: center;
-    border: 1px solid rgba(184, 148, 95, 0.2);
-    backdrop-filter: blur(10px);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    box-shadow: var(--shadow-soft);
     transition: all 0.4s ease;
   }
 
+  .category-card h3 {
+    color: var(--crayola-purple);
+  }
+
   .category-card:hover {
-    background: rgba(61, 47, 31, 0.5);
-    border-color: var(--muted-gold);
+    background: var(--pure-white);
+    border-color: var(--crayola-purple);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-large);
   }
 
   .card-icon {
@@ -289,6 +303,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .about-text h2 {
     margin-bottom: 2rem;
+    color: --peaceful-purple
   }
 
   .about-text p {
@@ -336,7 +351,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .newsletter {
     padding: 4rem 0;
-    background: rgba(74, 44, 90, 0.2);
+    background: var(--crayola-purple);
   }
 
   .newsletter-content {
@@ -348,11 +363,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .newsletter-content h2 {
     margin-bottom: 1rem;
     font-size: 2.5rem;
+    color: var(--pure-white) !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: var(--pure-white) !important;
+    background-clip: initial !important;
   }
 
   .newsletter-content p {
     margin-bottom: 2rem;
     font-size: 1.1rem;
+    color: var(--pure-white);
   }
 
   .newsletter-form {
@@ -365,21 +386,140 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .newsletter-form input {
     flex: 1;
     padding: 0.75rem 1.5rem;
-    background: rgba(26, 26, 26, 0.7);
-    border: 1px solid rgba(184, 148, 95, 0.3);
+    background: var(--light-gray);
+    border: 2px solid var(--crayola-orange);
     border-radius: 30px;
-    color: var(--moonlight-silver);
+    // color: var(--moonlight-silver);
     font-size: 1rem;
-  }
+}
 
-  .newsletter-form input:focus {
+.newsletter-form input:focus {
     outline: none;
-    border-color: var(--muted-gold);
+    background: var(--pure-white);
+    border-color: var(--crayola-green);
     box-shadow: 0 0 10px rgba(184, 148, 95, 0.2);
   }
 
   .newsletter-form input::placeholder {
-    color: var(--sage-green);
+    color: var(--peaceful-orange);
+  }
+
+  // Scroll Animation Styles
+  .scroll-animate {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+
+    &.animate {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    // Gentle bounce animations
+    &.animate.animate__bounceInUp {
+      animation: gentleBounceInUp 1s ease-out forwards;
+    }
+
+    &.animate.animate__bounceInLeft {
+      animation: gentleBounceInLeft 1s ease-out forwards;
+    }
+
+    &.animate.animate__bounceInRight {
+      animation: gentleBounceInRight 1s ease-out forwards;
+    }
+
+    &.animate.animate__rubberBand {
+      animation: gentleRubberBand 1.2s ease-out forwards;
+    }
+  }
+
+  // Gentle Animation Keyframes
+  @keyframes gentleBounceInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 60px, 0) scale(0.95);
+    }
+    25% {
+      opacity: 0.7;
+      transform: translate3d(0, -10px, 0) scale(1.02);
+    }
+    50% {
+      opacity: 0.9;
+      transform: translate3d(0, 5px, 0) scale(1.01);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  @keyframes gentleBounceInLeft {
+    from {
+      opacity: 0;
+      transform: translate3d(-60px, 0, 0) scale(0.95);
+    }
+    25% {
+      opacity: 0.7;
+      transform: translate3d(10px, 0, 0) scale(1.02);
+    }
+    50% {
+      opacity: 0.9;
+      transform: translate3d(-5px, 0, 0) scale(1.01);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  @keyframes gentleBounceInRight {
+    from {
+      opacity: 0;
+      transform: translate3d(60px, 0, 0) scale(0.95);
+    }
+    25% {
+      opacity: 0.7;
+      transform: translate3d(-10px, 0, 0) scale(1.02);
+    }
+    50% {
+      opacity: 0.9;
+      transform: translate3d(5px, 0, 0) scale(1.01);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  @keyframes gentleRubberBand {
+    from {
+      opacity: 0;
+      transform: scale3d(1, 1, 1);
+    }
+    15% {
+      opacity: 0.3;
+      transform: scale3d(1.05, 0.95, 1);
+    }
+    30% {
+      opacity: 0.6;
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    45% {
+      opacity: 0.8;
+      transform: scale3d(1.02, 0.98, 1);
+    }
+    60% {
+      opacity: 0.9;
+      transform: scale3d(0.98, 1.02, 1);
+    }
+    75% {
+      opacity: 0.95;
+      transform: scale3d(1.01, 0.99, 1);
+    }
+    to {
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+    }
   }
 
   @media (max-width: 768px) {
@@ -484,4 +624,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   `;
   document.head.appendChild(style);
+
+  // Intersection Observer for scroll-triggered animations
+  document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+      threshold: 0.3, // Trigger when 30% of element is visible
+      rootMargin: '0px 0px -50px 0px' // Trigger slightly before element enters viewport
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          const animationType = element.dataset.animation;
+          const delay = parseInt(element.dataset.delay) || 0;
+
+          // Use setTimeout to stagger animation timing
+          setTimeout(() => {
+            element.classList.add('animate');
+            element.classList.add(`animate__${animationType}`);
+          }, delay);
+
+          // Stop observing this element after animation triggers
+          observer.unobserve(element);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with scroll-animate class
+    const animateElements = document.querySelectorAll('.scroll-animate');
+    animateElements.forEach((element) => {
+      observer.observe(element);
+    });
+  });
 </script>

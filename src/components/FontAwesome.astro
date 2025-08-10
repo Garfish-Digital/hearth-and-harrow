@@ -1,0 +1,173 @@
+---
+// Font Awesome Pro Integration Component - Professional SVG Implementation
+import { icon, library, config } from '@fortawesome/fontawesome-svg-core';
+import { 
+  faHeart, 
+  faGem, 
+  faMagic,
+  faLeaf,
+  faMoon,
+  faStar,
+  faSparkles
+} from '@fortawesome/pro-solid-svg-icons';
+import { 
+  faHeart as farHeart,
+  faGem as farGem,
+  faMagic as farMagic
+} from '@fortawesome/pro-regular-svg-icons';
+import { 
+  faHeart as falHeart,
+  faGem as falGem
+} from '@fortawesome/pro-light-svg-icons';
+import {
+  faHeart as fadHeart,
+  faGem as fadGem
+} from '@fortawesome/pro-duotone-svg-icons';
+
+// Configure Font Awesome
+config.autoAddCss = false;
+
+// Add icons to library
+library.add(
+  faHeart, faGem, faMagic, faLeaf, faMoon, faStar, faSparkles,
+  farHeart, farGem, farMagic,
+  falHeart, falGem,
+  fadHeart, fadGem
+);
+
+export interface Props {
+  icon: string;
+  style?: 'solid' | 'regular' | 'light' | 'duotone';
+  size?: 'xs' | 'sm' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl' | '10xl';
+  class?: string;
+  color?: string;
+  gradient?: 'peaceful-blue' | 'peaceful-green' | 'peaceful-yellow' | 'peaceful-purple' | 'peaceful-orange' | 'peaceful-red';
+}
+
+const { 
+  icon: iconName, 
+  style = 'solid', 
+  size = 'lg', 
+  class: className = '',
+  color,
+  gradient
+} = Astro.props;
+
+// Map styles to FontAwesome prefix
+const stylePrefix = {
+  solid: 'fas',
+  regular: 'far', 
+  light: 'fal',
+  duotone: 'fad'
+};
+
+try {
+  // Generate SVG
+  const iconSvg = icon({ prefix: stylePrefix[style], iconName });
+  const svgHtml = iconSvg.html[0];
+  
+  // Build CSS classes
+  let cssClasses = `fa-icon fa-${size}`;
+  if (gradient) cssClasses += ` ${gradient}`;
+  if (className) cssClasses += ` ${className}`;
+  
+} catch (error) {
+  console.error(`Font Awesome Pro icon error: ${iconName}`, error);
+  // Fallback to simple HTML entity or basic icon
+}
+---
+
+<span 
+  class={cssClasses} 
+  style={color ? `color: ${color}` : ''}
+  set:html={svgHtml}
+></span>
+
+<style>
+  /* Font Awesome Pro SVG Styles */
+  .fa-icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  /* Size classes */
+  .fa-xs { width: 0.75em; height: 0.75em; }
+  .fa-sm { width: 0.875em; height: 0.875em; }
+  .fa-lg { width: 1.25em; height: 1.25em; }
+  .fa-xl { width: 1.5em; height: 1.5em; }
+  .fa-2xl { width: 2em; height: 2em; }
+  .fa-3xl { width: 3em; height: 3em; }
+  .fa-4xl { width: 4em; height: 4em; }
+  .fa-5xl { width: 5em; height: 5em; }
+  .fa-6xl { width: 6em; height: 6em; }
+  .fa-7xl { width: 7em; height: 7em; }
+  .fa-8xl { width: 8em; height: 8em; }
+  .fa-9xl { width: 9em; height: 9em; }
+  .fa-10xl { width: 10em; height: 10em; }
+  
+  /* Peaceful gradient colors for icons */
+  .peaceful-blue {
+    color: var(--crayola-blue);
+    background: linear-gradient(135deg, var(--crayola-blue), var(--peaceful-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .peaceful-green {
+    color: var(--crayola-green);
+    background: linear-gradient(135deg, var(--crayola-green), var(--peaceful-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .peaceful-yellow {
+    color: var(--crayola-yellow);
+    background: linear-gradient(135deg, var(--crayola-yellow), var(--peaceful-yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .peaceful-purple {
+    color: var(--crayola-purple);
+    background: linear-gradient(135deg, var(--crayola-purple), var(--peaceful-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .peaceful-orange {
+    color: var(--crayola-orange);
+    background: linear-gradient(135deg, var(--crayola-orange), var(--peaceful-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .peaceful-red {
+    color: var(--crayola-red);
+    background: linear-gradient(135deg, var(--crayola-red), var(--peaceful-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Fallback for unsupported browsers */
+  @supports not (-webkit-background-clip: text) {
+    .peaceful-blue { color: var(--crayola-blue); }
+    .peaceful-green { color: var(--crayola-green); }
+    .peaceful-yellow { color: var(--crayola-yellow); }
+    .peaceful-purple { color: var(--crayola-purple); }
+    .peaceful-orange { color: var(--crayola-orange); }
+    .peaceful-red { color: var(--crayola-red); }
+  }
+  
+  /* Duotone specific styles for Pro */
+  .fa-icon svg.fa-duotone {
+    --fa-secondary-opacity: 0.4;
+    --fa-primary-color: currentColor;
+    --fa-secondary-color: currentColor;
+  }
+</style>

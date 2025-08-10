@@ -1,8 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import productsData from '../../data/products.json';
+
+// Get all products for the bento box showcase
+const allProducts = productsData.products;
+const categories = productsData.categories;
 ---
 
-<BaseLayout title="Shop - Hearth & Harrow" description="Explore our mystical collections of herbs, crystals, divination tools, and ritual wear">
+<BaseLayout title="Shop - Hearth & Harrow" description="Explore our mystical collections of herbs, crystals, and divination tools">
   <!-- Hero Section -->
   <section class="shop-hero">
     <div class="container">
@@ -17,45 +22,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="shop-categories">
     <div class="container">
       <div class="categories-grid">
-        <a href="/shop/herbs-resins" class="category-card mystical-card large-card">
-          <div class="card-background herbs-bg"></div>
-          <div class="card-content">
-            <div class="card-icon">🌿</div>
-            <h2>Herbs & Resins</h2>
-            <p>Sacred botanicals for rituals, spells, and healing</p>
-            <span class="item-count">50+ Items</span>
-          </div>
-        </a>
-
-        <a href="/shop/crystals" class="category-card mystical-card large-card">
-          <div class="card-background crystals-bg"></div>
-          <div class="card-content">
-            <div class="card-icon">💎</div>
-            <h2>Crystals & Stones</h2>
-            <p>Earth's ancient energies crystallized</p>
-            <span class="item-count">75+ Items</span>
-          </div>
-        </a>
-
-        <a href="/shop/divination" class="category-card mystical-card large-card">
-          <div class="card-background divination-bg"></div>
-          <div class="card-content">
-            <div class="card-icon">🔮</div>
-            <h2>Divination Tools</h2>
-            <p>Peer beyond the veil of the unknown</p>
-            <span class="item-count">40+ Items</span>
-          </div>
-        </a>
-
-        <a href="/shop/ritual-wear" class="category-card mystical-card large-card">
-          <div class="card-background ritual-bg"></div>
-          <div class="card-content">
-            <div class="card-icon">🌙</div>
-            <h2>Ritual Wear</h2>
-            <p>Sacred garments for ceremony and practice</p>
-            <span class="item-count">30+ Items</span>
-          </div>
-        </a>
+        {categories.map(category => {
+          const categoryProducts = productsData.products.filter(p => p.category === category.id);
+          return (
+            <a href={`/shop/${category.id}`} class="category-card mystical-card large-card">
+              <div class={`card-background ${category.id}-bg`}></div>
+              <div class="card-content">
+                <div class="card-icon">{category.icon}</div>
+                <h2>{category.name}</h2>
+                <p>{category.description}</p>
+                <span class="item-count">{categoryProducts.length} Items</span>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -64,78 +44,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="featured-products">
     <div class="container">
       <h2>Featured Treasures</h2>
-      <div class="products-grid">
-        <div class="product-card mystical-card">
-          <div class="product-image">
-            <div class="product-placeholder sage-placeholder"></div>
-          </div>
-          <div class="product-info">
-            <h3>White Sage Bundle</h3>
-            <p class="product-category">Herbs & Resins</p>
-            <p class="product-price">$12.99</p>
-            <button class="add-to-cart-btn" data-product="White Sage Bundle" data-price="12.99">Add to Cart</button>
-          </div>
-        </div>
+      
+      <!-- Filter Buttons -->
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All Products</button>
+        <button class="filter-btn" data-filter="herbs-resins">🌿 Herbs & Resins</button>
+        <button class="filter-btn" data-filter="crystals">💎 Crystals</button>
+        <button class="filter-btn" data-filter="divination">🔮 Divination</button>
+      </div>
 
-        <div class="product-card mystical-card">
-          <div class="product-image">
-            <div class="product-placeholder amethyst-placeholder"></div>
-          </div>
-          <div class="product-info">
-            <h3>Amethyst Cluster</h3>
-            <p class="product-category">Crystals</p>
-            <p class="product-price">$24.99</p>
-            <button class="add-to-cart-btn" data-product="Amethyst Cluster" data-price="24.99">Add to Cart</button>
-          </div>
-        </div>
-
-        <div class="product-card mystical-card">
-          <div class="product-image">
-            <div class="product-placeholder tarot-placeholder"></div>
-          </div>
-          <div class="product-info">
-            <h3>Rider-Waite Tarot Deck</h3>
-            <p class="product-category">Divination</p>
-            <p class="product-price">$19.99</p>
-            <button class="add-to-cart-btn" data-product="Rider-Waite Tarot Deck" data-price="19.99">Add to Cart</button>
-          </div>
-        </div>
-
-        <div class="product-card mystical-card">
-          <div class="product-image">
-            <div class="product-placeholder pendant-placeholder"></div>
-          </div>
-          <div class="product-info">
-            <h3>Pentagram Pendant</h3>
-            <p class="product-category">Ritual Wear</p>
-            <p class="product-price">$34.99</p>
-            <button class="add-to-cart-btn" data-product="Pentagram Pendant" data-price="34.99">Add to Cart</button>
-          </div>
-        </div>
-
-        <div class="product-card mystical-card">
-          <div class="product-image">
-            <div class="product-placeholder frankincense-placeholder"></div>
-          </div>
-          <div class="product-info">
-            <h3>Frankincense Resin</h3>
-            <p class="product-category">Herbs & Resins</p>
-            <p class="product-price">$16.99</p>
-            <button class="add-to-cart-btn" data-product="Frankincense Resin" data-price="16.99">Add to Cart</button>
-          </div>
-        </div>
-
-        <div class="product-card mystical-card">
-          <div class="product-image">
-            <div class="product-placeholder quartz-placeholder"></div>
-          </div>
-          <div class="product-info">
-            <h3>Clear Quartz Point</h3>
-            <p class="product-category">Crystals</p>
-            <p class="product-price">$18.99</p>
-            <button class="add-to-cart-btn" data-product="Clear Quartz Point" data-price="18.99">Add to Cart</button>
-          </div>
-        </div>
+      <!-- Products Bento Grid -->
+      <div class="products-bento-grid" id="products-grid">
+        {allProducts.map(product => {
+          const categoryName = categories.find(c => c.id === product.category)?.name || product.category;
+          return (
+            <div class={`product-card bento-item scroll-animate`} data-category={product.category} data-animation="gentleBounceIn" data-delay="0">
+              <div class="product-image">
+                <div class={`product-placeholder ${product.placeholder}`}></div>
+              </div>
+              <div class="product-info">
+                <h3>{product.name}</h3>
+                <p class="product-category">{categoryName}</p>
+                <p class="product-price">${product.price}</p>
+                <button class="add-to-cart-btn" data-product={product.name} data-price={product.price.toString()}>Add to Cart</button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -219,16 +154,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     opacity: 0.2;
   }
 
-  .herbs-bg {
-    background: radial-gradient(circle, var(--forest-green), transparent);
+  .herbs-resins-bg {
+    background: radial-gradient(circle, var(--crayola-green), transparent);
   }
 
   .crystals-bg {
-    background: radial-gradient(circle, var(--rich-purple), transparent);
+    background: radial-gradient(circle, var(--crayola-purple), transparent);
   }
 
   .divination-bg {
-    background: radial-gradient(circle, var(--deep-forest-blue), transparent);
+    background: radial-gradient(circle, var(--crayola-blue), transparent);
   }
 
   .ritual-bg {
@@ -276,6 +211,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 3rem;
   }
 
+  // Filter Buttons
+  .filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 2px solid var(--crayola-purple);
+    color: var(--crayola-purple);
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    background: var(--crayola-purple);
+    color: var(--pure-white);
+    transform: translateY(-2px);
+  }
+
+  // Bento Box Grid System
+  .products-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
   .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -283,16 +254,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .product-card {
-    background: rgba(61, 47, 31, 0.3);
-    border-radius: 15px;
+    background: var(--pure-white);
+    border-radius: 24px;
     overflow: hidden;
-    border: 1px solid rgba(184, 148, 95, 0.2);
-    transition: all 0.4s ease;
+    border: 1px solid rgba(168, 85, 247, 0.05);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    transform-origin: center;
   }
 
   .product-card:hover {
-    border-color: var(--muted-gold);
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-colored);
+    border-color: var(--crayola-purple);
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--rainbow-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .product-card:hover::before {
+    opacity: 1;
+  }
+
+  // Filter animation states
+  .product-card.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+  }
+
+  .product-card.visible {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
   }
 
   .product-image {
@@ -334,6 +338,127 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .quartz-placeholder {
     background: linear-gradient(45deg, #ffffff20, var(--moonlight-silver));
+  }
+
+  // Additional product placeholders
+  .lavender-placeholder {
+    background: linear-gradient(45deg, #8B7FC7, #C9A9DD);
+  }
+
+  .dragons-blood-placeholder {
+    background: linear-gradient(45deg, #8B0000, #CD5C5C);
+  }
+
+  .palo-santo-placeholder {
+    background: linear-gradient(45deg, #8B7355, #D2B48C);
+  }
+
+  .mugwort-placeholder {
+    background: linear-gradient(45deg, #556B2F, #9ACD32);
+  }
+
+  .copal-placeholder {
+    background: linear-gradient(45deg, #DAA520, #FFD700);
+  }
+
+  .cedar-placeholder {
+    background: linear-gradient(45deg, #A0522D, #CD853F);
+  }
+
+  .rose-placeholder {
+    background: linear-gradient(45deg, #DC143C, #FFB6C1);
+  }
+
+  .myrrh-placeholder {
+    background: linear-gradient(45deg, #8B4513, #F4A460);
+  }
+
+  .juniper-placeholder {
+    background: linear-gradient(45deg, #2F4F4F, #708090);
+  }
+
+  .benzoin-placeholder {
+    background: linear-gradient(45deg, #DEB887, #F5DEB3);
+  }
+
+  .rose-quartz-placeholder {
+    background: linear-gradient(45deg, #F8BBD9, #FFE4E1);
+  }
+
+  .tourmaline-placeholder {
+    background: linear-gradient(45deg, #2F2F2F, #4F4F4F);
+  }
+
+  .selenite-placeholder {
+    background: linear-gradient(45deg, #F5F5F5, #FFFFFF);
+  }
+
+  .labradorite-placeholder {
+    background: linear-gradient(45deg, #2F4F4F, #4682B4);
+  }
+
+  .citrine-placeholder {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+  }
+
+  .moonstone-placeholder {
+    background: linear-gradient(45deg, #E6E6FA, #F0F8FF);
+  }
+
+  .hematite-placeholder {
+    background: linear-gradient(45deg, #36454F, #708090);
+  }
+
+  .garnet-placeholder {
+    background: linear-gradient(45deg, #8B0000, #DC143C);
+  }
+
+  .fluorite-placeholder {
+    background: linear-gradient(45deg, #32CD32, #90EE90);
+  }
+
+  .obsidian-placeholder {
+    background: linear-gradient(45deg, #000000, #2F2F2F);
+  }
+
+  .crystal-ball-placeholder {
+    background: linear-gradient(45deg, #F0F8FF, #E6E6FA);
+  }
+
+  .runes-placeholder {
+    background: linear-gradient(45deg, #8B4513, #D2691E);
+  }
+
+  .chalice-placeholder {
+    background: linear-gradient(45deg, #B8860B, #FFD700);
+  }
+
+  .wand-placeholder {
+    background: linear-gradient(45deg, #CD853F, #F4A460);
+  }
+
+  .cauldron-placeholder {
+    background: linear-gradient(45deg, #2F2F2F, #696969);
+  }
+
+  .oracle-placeholder {
+    background: linear-gradient(45deg, #191970, #4B0082);
+  }
+
+  .pendulum-placeholder {
+    background: linear-gradient(45deg, #9370DB, #DDA0DD);
+  }
+
+  .athame-placeholder {
+    background: linear-gradient(45deg, #C0C0C0, #2F2F2F);
+  }
+
+  .goddess-placeholder {
+    background: linear-gradient(45deg, #F5DEB3, #DEB887);
+  }
+
+  .cloth-placeholder {
+    background: linear-gradient(45deg, #000000, #4B0082);
   }
 
   .product-info {
@@ -611,8 +736,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     updateCartDisplay();
   }
 
+  // Product Filtering Functionality
+  function filterProducts(category) {
+    const productCards = document.querySelectorAll('.product-card[data-category]');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    // Update active button
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+    
+    productCards.forEach(card => {
+      const productCategory = card.getAttribute('data-category');
+      
+      if (category === 'all' || productCategory === category) {
+        card.classList.remove('hidden');
+        card.classList.add('visible');
+      } else {
+        card.classList.add('hidden');
+        card.classList.remove('visible');
+      }
+    });
+  }
+
   // Event Listeners
   document.addEventListener('DOMContentLoaded', () => {
+    // Initialize all products as visible
+    document.querySelectorAll('.product-card[data-category]').forEach(card => {
+      card.classList.add('visible');
+    });
+
+    // Filter button functionality
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const filter = e.target.getAttribute('data-filter');
+        filterProducts(filter);
+      });
+    });
+
     // Add to cart buttons
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
       button.addEventListener('click', (e) => {

@@ -1,4 +1,6 @@
 ---
+import FontAwesome from '../components/FontAwesome.astro';
+
 export interface Props {
   title: string;
   description?: string;
@@ -19,14 +21,15 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
   <meta property="og:description" content={description}>
   <meta property="og:url" content="https://hearthandharrow.netlify.app">
   <meta property="og:type" content="website">
+  <meta name="robots" content="noindex, nofollow" />
+  
+  <!-- Font Awesome Pro will be loaded via components -->
 </head>
 <body>
   <nav class="main-nav">
     <div class="container">
       <div class="nav-content">
-        <a href="/" class="logo">
-          <span class="logo-text">Hearth & Harrow</span>
-        </a>
+        <h3 class="hero-title">Hearth & Harrow</h3>
         <ul class="nav-links">
           <li><a href="/">Home</a></li>
           <li class="dropdown">
@@ -35,7 +38,6 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
               <li><a href="/shop/herbs-resins">Herbs & Resins</a></li>
               <li><a href="/shop/crystals">Crystals</a></li>
               <li><a href="/shop/divination">Divination Tools</a></li>
-              <li><a href="/shop/ritual-wear">Ritual Wear</a></li>
             </ul>
           </li>
           <li><a href="/about">About Us</a></li>
@@ -58,7 +60,7 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>Hearth & Harrow</h3>
+          <h3 class="scroll-animate" data-animation="bounceInLeft" data-delay="0">Hearth & Harrow</h3>
           <p>Authentic tools for your spiritual journey</p>
         </div>
         <div class="footer-section">
@@ -75,7 +77,6 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
             <li><a href="/shop/herbs-resins">Herbs & Resins</a></li>
             <li><a href="/shop/crystals">Crystals</a></li>
             <li><a href="/shop/divination">Divination Tools</a></li>
-            <li><a href="/shop/ritual-wear">Ritual Wear</a></li>
           </ul>
         </div>
       </div>
@@ -93,10 +94,10 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(26, 26, 26, 0.95);
+      background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(10px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(184, 148, 95, 0.2);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.1);
     }
 
     .nav-content {
@@ -127,7 +128,7 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
     }
 
     .nav-links a {
-      color: var(--moonlight-silver);
+      color: var(--text-gray);
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -137,8 +138,8 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
     }
 
     .nav-links a:hover {
-      background: rgba(184, 148, 95, 0.1);
-      color: var(--muted-gold);
+      background: rgba(168, 85, 247, 0.1);
+      color: var(--crayola-purple);
     }
 
     .dropdown {
@@ -149,16 +150,17 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
       position: absolute;
       top: 100%;
       left: 0;
-      background: rgba(26, 26, 26, 0.95);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(184, 148, 95, 0.2);
+      background: var(--pure-white);
+      border: 1px solid rgba(168, 85, 247, 0.2);
       border-radius: 10px;
-      padding: 1rem 0;
+      padding: 0.5rem 0;
       opacity: 0;
       visibility: hidden;
       transform: translateY(-10px);
       transition: all 0.3s ease;
       min-width: 200px;
+      box-shadow: var(--shadow-medium);
+      list-style: none;
     }
 
     .dropdown:hover .dropdown-menu {
@@ -169,6 +171,7 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
 
     .dropdown-menu li {
       padding: 0;
+      list-style: none;
     }
 
     .dropdown-menu a {
@@ -177,6 +180,12 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
       text-transform: none;
       letter-spacing: normal;
       border-radius: 0;
+      color: var(--text-gray);
+    }
+
+    .dropdown-menu a:hover {
+      background: rgba(168, 85, 247, 0.1);
+      color: var(--crayola-purple);
     }
 
     .mobile-menu-toggle {
@@ -215,7 +224,7 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
 
     .footer-section h3,
     .footer-section h4 {
-      color: var(--muted-gold);
+      color: var(--peaceful-purple);
       margin-bottom: 1rem;
       font-family: 'Playfair Display', serif;
     }
@@ -244,6 +253,43 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
       color: var(--sage-green);
     }
 
+    // Scroll Animation Styles
+    .scroll-animate {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+
+      &.animate {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      // Gentle bounce animations
+      &.animate.animate__bounceInLeft {
+        animation: gentleBounceInLeft 1s ease-out forwards;
+      }
+    }
+
+    // Gentle Animation Keyframes
+    @keyframes gentleBounceInLeft {
+      from {
+        opacity: 0;
+        transform: translate3d(-60px, 0, 0) scale(0.95);
+      }
+      25% {
+        opacity: 0.7;
+        transform: translate3d(10px, 0, 0) scale(1.02);
+      }
+      50% {
+        opacity: 0.9;
+        transform: translate3d(-5px, 0, 0) scale(1.01);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+    }
+
     @media (max-width: 768px) {
       .nav-links {
         display: none;
@@ -261,31 +307,37 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
   </style>
 
   <script>
-    // Cursor sparkle effect
-    document.addEventListener('mousemove', (e) => {
-      if (Math.random() > 0.8) {
-        const sparkle = document.createElement('div');
-        sparkle.className = 'cursor-sparkle';
-        sparkle.style.left = e.clientX + 'px';
-        sparkle.style.top = e.clientY + 'px';
-        document.body.appendChild(sparkle);
-        
-        setTimeout(() => {
-          sparkle.remove();
-        }, 600);
-      }
-    });
+    // Intersection Observer for scroll-triggered animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const observerOptions = {
+        threshold: 0.3, // Trigger when 30% of element is visible
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before element enters viewport
+      };
 
-    // Ambient scroll behavior
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-      document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
-      
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        const scrollPercent = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
-        document.body.style.filter = `hue-rotate(${scrollPercent * 20}deg) saturate(${1 + scrollPercent * 0.2})`;
-      }, 50);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target;
+            const animationType = element.dataset.animation;
+            const delay = parseInt(element.dataset.delay) || 0;
+
+            // Use setTimeout to stagger animation timing
+            setTimeout(() => {
+              element.classList.add('animate');
+              element.classList.add(`animate__${animationType}`);
+            }, delay);
+
+            // Stop observing this element after animation triggers
+            observer.unobserve(element);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with scroll-animate class
+      const animateElements = document.querySelectorAll('.scroll-animate');
+      animateElements.forEach((element) => {
+        observer.observe(element);
+      });
     });
   </script>
 </body>

@@ -1,0 +1,354 @@
+{
+  "categories": [
+    {
+      "id": "herbs-resins",
+      "name": "Herbs & Resins",
+      "description": "Sacred botanicals for rituals, spells, and healing practices",
+      "icon": "🌿"
+    },
+    {
+      "id": "crystals",
+      "name": "Crystals",
+      "description": "Powerful crystals and gemstones to amplify your intentions",
+      "icon": "💎"
+    },
+    {
+      "id": "divination",
+      "name": "Divination",
+      "description": "Peer beyond the veil with sacred divination tools",
+      "icon": "🔮"
+    }
+  ],
+  "products": [
+    {
+      "id": "white-sage-bundle",
+      "name": "White Sage Bundle",
+      "category": "herbs-resins",
+      "price": 12.99,
+      "description": "Ethically harvested California white sage for cleansing and purification rituals.",
+      "image": "white-sage.jpg",
+      "placeholder": "sage-placeholder",
+      "featured": true
+    },
+    {
+      "id": "frankincense-resin",
+      "name": "Frankincense Resin",
+      "category": "herbs-resins",
+      "price": 16.99,
+      "description": "Premium Boswellia resin from Oman, perfect for meditation and sacred ceremonies.",
+      "image": "frankincense.jpg",
+      "placeholder": "frankincense-placeholder",
+      "featured": true
+    },
+    {
+      "id": "lavender-sprigs",
+      "name": "Dried Lavender Sprigs",
+      "category": "herbs-resins",
+      "price": 8.99,
+      "description": "Organic French lavender for peace, protection, and restful sleep.",
+      "image": "lavender.jpg",
+      "placeholder": "lavender-placeholder"
+    },
+    {
+      "id": "dragon-blood-resin",
+      "name": "Dragon's Blood Resin",
+      "category": "herbs-resins",
+      "price": 22.99,
+      "description": "Mystical red resin from Dracaena trees, used for protection and manifestation.",
+      "image": "dragons-blood.jpg",
+      "placeholder": "dragons-blood-placeholder"
+    },
+    {
+      "id": "palo-santo-sticks",
+      "name": "Palo Santo Wood Sticks",
+      "category": "herbs-resins",
+      "price": 14.99,
+      "description": "Sacred wood from Peru, known as 'holy wood' for spiritual cleansing.",
+      "image": "palo-santo.jpg",
+      "placeholder": "palo-santo-placeholder"
+    },
+    {
+      "id": "mugwort-leaves",
+      "name": "Organic Mugwort Leaves",
+      "category": "herbs-resins",
+      "price": 11.99,
+      "description": "Dried mugwort for lucid dreaming, divination, and astral projection.",
+      "image": "mugwort.jpg",
+      "placeholder": "mugwort-placeholder"
+    },
+    {
+      "id": "copal-resin",
+      "name": "Mayan Copal Resin",
+      "category": "herbs-resins",
+      "price": 18.99,
+      "description": "Traditional Mayan ceremonial resin for offerings and spiritual communication.",
+      "image": "copal.jpg",
+      "placeholder": "copal-placeholder"
+    },
+    {
+      "id": "cedar-bundle",
+      "name": "Cedar Smudge Bundle",
+      "category": "herbs-resins",
+      "price": 10.99,
+      "description": "Wild-harvested cedar for grounding, protection, and ancestral connection.",
+      "image": "cedar-bundle.jpg",
+      "placeholder": "cedar-placeholder"
+    },
+    {
+      "id": "rose-petals",
+      "name": "Dried Rose Petals",
+      "category": "herbs-resins",
+      "price": 9.99,
+      "description": "Organic red rose petals for love spells, self-care, and heart healing.",
+      "image": "rose-petals.jpg",
+      "placeholder": "rose-placeholder"
+    },
+    {
+      "id": "myrrh-resin",
+      "name": "Myrrh Resin Tears",
+      "category": "herbs-resins",
+      "price": 24.99,
+      "description": "Ancient myrrh resin from Somalia, prized for its protective and healing properties.",
+      "image": "myrrh.jpg",
+      "placeholder": "myrrh-placeholder"
+    },
+    {
+      "id": "juniper-berries",
+      "name": "Juniper Berries",
+      "category": "herbs-resins",
+      "price": 13.99,
+      "description": "Wild juniper berries for purification, protection, and psychic enhancement.",
+      "image": "juniper.jpg",
+      "placeholder": "juniper-placeholder"
+    },
+    {
+      "id": "benzoin-resin",
+      "name": "Benzoin Resin",
+      "category": "herbs-resins",
+      "price": 19.99,
+      "description": "Sweet vanilla-scented resin for purification, prosperity, and mental clarity.",
+      "image": "benzoin.jpg",
+      "placeholder": "benzoin-placeholder"
+    },
+    {
+      "id": "amethyst-cluster",
+      "name": "Amethyst Cluster",
+      "category": "crystals",
+      "price": 24.99,
+      "description": "Natural amethyst cluster from Brazil, perfect for meditation and spiritual protection.",
+      "image": "amethyst-cluster.jpg",
+      "placeholder": "amethyst-placeholder",
+      "featured": true
+    },
+    {
+      "id": "clear-quartz-point",
+      "name": "Clear Quartz Point",
+      "category": "crystals",
+      "price": 18.99,
+      "description": "High-grade clear quartz crystal point for amplifying energy and intentions.",
+      "image": "clear-quartz.jpg",
+      "placeholder": "quartz-placeholder",
+      "featured": true
+    },
+    {
+      "id": "rose-quartz-heart",
+      "name": "Rose Quartz Heart",
+      "category": "crystals",
+      "price": 16.99,
+      "description": "Polished rose quartz heart stone for unconditional love and emotional healing.",
+      "image": "rose-quartz-heart.jpg",
+      "placeholder": "rose-quartz-placeholder"
+    },
+    {
+      "id": "black-tourmaline",
+      "name": "Black Tourmaline Raw",
+      "category": "crystals",
+      "price": 22.99,
+      "description": "Raw black tourmaline specimen for protection against negative energies.",
+      "image": "black-tourmaline.jpg",
+      "placeholder": "tourmaline-placeholder"
+    },
+    {
+      "id": "selenite-wand",
+      "name": "Selenite Cleansing Wand",
+      "category": "crystals",
+      "price": 28.99,
+      "description": "Natural selenite wand for cleansing other crystals and creating sacred space.",
+      "image": "selenite-wand.jpg",
+      "placeholder": "selenite-placeholder"
+    },
+    {
+      "id": "labradorite-palm",
+      "name": "Labradorite Palm Stone",
+      "category": "crystals",
+      "price": 32.99,
+      "description": "Polished labradorite palm stone with stunning blue flash for transformation.",
+      "image": "labradorite.jpg",
+      "placeholder": "labradorite-placeholder"
+    },
+    {
+      "id": "citrine-points",
+      "name": "Citrine Crystal Points",
+      "category": "crystals",
+      "price": 26.99,
+      "description": "Set of three natural citrine points for abundance, joy, and manifestation.",
+      "image": "citrine-points.jpg",
+      "placeholder": "citrine-placeholder"
+    },
+    {
+      "id": "moonstone-sphere",
+      "name": "Rainbow Moonstone Sphere",
+      "category": "crystals",
+      "price": 45.99,
+      "description": "Polished moonstone sphere with rainbow flash for lunar magic and intuition.",
+      "image": "moonstone-sphere.jpg",
+      "placeholder": "moonstone-placeholder"
+    },
+    {
+      "id": "hematite-stones",
+      "name": "Hematite Tumbled Stones",
+      "category": "crystals",
+      "price": 12.99,
+      "description": "Set of five polished hematite stones for grounding and mental focus.",
+      "image": "hematite.jpg",
+      "placeholder": "hematite-placeholder"
+    },
+    {
+      "id": "garnet-bracelet",
+      "name": "Garnet Crystal Bracelet",
+      "category": "crystals",
+      "price": 34.99,
+      "description": "Elegant garnet bead bracelet for passion, vitality, and root chakra healing.",
+      "image": "garnet-bracelet.jpg",
+      "placeholder": "garnet-placeholder"
+    },
+    {
+      "id": "fluorite-octahedron",
+      "name": "Green Fluorite Octahedron",
+      "category": "crystals",
+      "price": 29.99,
+      "description": "Natural fluorite octahedron for mental clarity, focus, and spiritual growth.",
+      "image": "fluorite.jpg",
+      "placeholder": "fluorite-placeholder"
+    },
+    {
+      "id": "obsidian-mirror",
+      "name": "Obsidian Scrying Mirror",
+      "category": "crystals",
+      "price": 38.99,
+      "description": "Polished obsidian mirror for scrying, shadow work, and divination practices.",
+      "image": "obsidian-mirror.jpg",
+      "placeholder": "obsidian-placeholder"
+    },
+    {
+      "id": "tarot-deck-rider",
+      "name": "Rider-Waite Tarot Deck",
+      "category": "divination",
+      "price": 19.99,
+      "description": "Classic Rider-Waite tarot deck with guidebook, perfect for beginners.",
+      "image": "rider-waite-tarot.jpg",
+      "placeholder": "tarot-placeholder",
+      "featured": true
+    },
+    {
+      "id": "pentagram-pendant",
+      "name": "Sterling Silver Pentagram Pendant",
+      "category": "divination",
+      "price": 34.99,
+      "description": "Handcrafted sterling silver pentagram pendant for protection and balance.",
+      "image": "pentagram-pendant.jpg",
+      "placeholder": "pendant-placeholder",
+      "featured": true
+    },
+    {
+      "id": "crystal-ball",
+      "name": "Quartz Crystal Ball",
+      "category": "divination",
+      "price": 89.99,
+      "description": "3-inch clear quartz crystal ball with wooden stand for scrying and divination.",
+      "image": "crystal-ball.jpg",
+      "placeholder": "crystal-ball-placeholder"
+    },
+    {
+      "id": "rune-set-elder",
+      "name": "Elder Futhark Rune Set",
+      "category": "divination",
+      "price": 28.99,
+      "description": "Hand-carved oak rune set with velvet pouch and interpretation guide.",
+      "image": "elder-runes.jpg",
+      "placeholder": "runes-placeholder"
+    },
+    {
+      "id": "brass-chalice-goat",
+      "name": "Goat Skull Brass Chalice",
+      "category": "divination",
+      "price": 67.99,
+      "description": "Ornate brass chalice with goat skull embossing for ritual ceremonies.",
+      "image": "goat-chalice.jpg",
+      "placeholder": "chalice-placeholder"
+    },
+    {
+      "id": "moon-phase-wand",
+      "name": "Moon Phase Copper Wand",
+      "category": "divination",
+      "price": 45.99,
+      "description": "Handcrafted copper wand with moon phase design and clear quartz tip.",
+      "image": "moon-wand.jpg",
+      "placeholder": "wand-placeholder"
+    },
+    {
+      "id": "iron-cauldron",
+      "name": "Cast Iron Mini Cauldron",
+      "category": "divination",
+      "price": 24.99,
+      "description": "Traditional 4-inch cast iron cauldron for burning herbs and ritual work.",
+      "image": "iron-cauldron.jpg",
+      "placeholder": "cauldron-placeholder"
+    },
+    {
+      "id": "oracle-cards-moon",
+      "name": "Moonology Oracle Cards",
+      "category": "divination",
+      "price": 22.99,
+      "description": "44-card oracle deck for working with lunar cycles and moon magic.",
+      "image": "moonology-oracle.jpg",
+      "placeholder": "oracle-placeholder"
+    },
+    {
+      "id": "pendulum-amethyst",
+      "name": "Amethyst Pendulum",
+      "category": "divination",
+      "price": 18.99,
+      "description": "Natural amethyst pendulum with silver chain for dowsing and divination.",
+      "image": "amethyst-pendulum.jpg",
+      "placeholder": "pendulum-placeholder"
+    },
+    {
+      "id": "athame-celtic",
+      "name": "Celtic Knotwork Athame",
+      "category": "divination",
+      "price": 56.99,
+      "description": "Ritual knife with Celtic knotwork handle and stainless steel blade.",
+      "image": "celtic-athame.jpg",
+      "placeholder": "athame-placeholder"
+    },
+    {
+      "id": "goddess-statue",
+      "name": "Triple Goddess Statue",
+      "category": "divination",
+      "price": 42.99,
+      "description": "Resin statue depicting the Triple Goddess in her three aspects.",
+      "image": "triple-goddess.jpg",
+      "placeholder": "goddess-placeholder"
+    },
+    {
+      "id": "altar-cloth-phases",
+      "name": "Moon Phases Altar Cloth",
+      "category": "divination",
+      "price": 16.99,
+      "description": "Black velvet altar cloth with silver moon phases design.",
+      "image": "altar-cloth.jpg",
+      "placeholder": "cloth-placeholder"
+    }
+  ]
+}

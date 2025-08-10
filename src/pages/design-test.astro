@@ -1,0 +1,363 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FontAwesome from '../components/FontAwesome.astro';
+---
+
+<BaseLayout title="Design System Test - Bright & Peaceful Theme">
+  <section class="test-hero">
+    <div class="container">
+      <h1 class="animate-fade-in">New Bright & Peaceful Design</h1>
+      <p class="hero-subtitle animate-slide-up">Complete transformation from dark mystical to bright, welcoming Crayola-inspired theme</p>
+    </div>
+  </section>
+
+  <section class="color-showcase">
+    <div class="container">
+      <h2>Crayola Color Palette</h2>
+      <div class="color-grid">
+        <div class="color-card bg-primary">
+          <FontAwesome icon="palette" style="solid" size="2xl" color="white" />
+          <h3>Crayola Blue</h3>
+          <p>#1F75FE</p>
+        </div>
+        <div class="color-card" style="background: var(--crayola-green);">
+          <FontAwesome icon="leaf" style="solid" size="2xl" color="white" />
+          <h3>Crayola Green</h3>
+          <p>#22C55E</p>
+        </div>
+        <div class="color-card" style="background: var(--crayola-yellow);">
+          <FontAwesome icon="sun" style="solid" size="2xl" color="white" />
+          <h3>Crayola Yellow</h3>
+          <p>#EAB308</p>
+        </div>
+        <div class="color-card" style="background: var(--crayola-red);">
+          <FontAwesome icon="heart" style="solid" size="2xl" color="white" />
+          <h3>Crayola Red</h3>
+          <p>#EF4444</p>
+        </div>
+        <div class="color-card" style="background: var(--crayola-orange);">
+          <FontAwesome icon="flame" style="solid" size="2xl" color="white" />
+          <h3>Crayola Orange</h3>
+          <p>#F97316</p>
+        </div>
+        <div class="color-card" style="background: var(--crayola-purple);">
+          <FontAwesome icon="gem" style="solid" size="2xl" color="white" />
+          <h3>Crayola Purple</h3>
+          <p>#A855F7</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="component-showcase">
+    <div class="container">
+      <h2>Component Showcase</h2>
+      
+      <div class="showcase-grid">
+        <div class="showcase-section">
+          <h3>Buttons</h3>
+          <div class="button-group">
+            <button class="btn primary">Primary Button</button>
+            <button class="btn secondary">Secondary Button</button>
+            <button class="btn success">Success Button</button>
+            <button class="btn warning">Warning Button</button>
+            <button class="btn danger">Danger Button</button>
+          </div>
+        </div>
+
+        <div class="showcase-section">
+          <h3>Font Awesome Icons</h3>
+          <div class="icon-showcase">
+            <FontAwesome icon="sparkles" style="solid" size="2xl" gradient="peaceful-blue" />
+            <FontAwesome icon="shopping-cart" style="solid" size="2xl" gradient="peaceful-green" />
+            <FontAwesome icon="heart" style="solid" size="2xl" gradient="peaceful-red" />
+            <FontAwesome icon="star" style="solid" size="2xl" gradient="peaceful-yellow" />
+            <FontAwesome icon="gem" style="solid" size="2xl" gradient="peaceful-purple" />
+            <FontAwesome icon="leaf" style="solid" size="2xl" gradient="peaceful-orange" />
+          </div>
+        </div>
+
+        <div class="showcase-section">
+          <h3>Input Elements</h3>
+          <div class="form-demo">
+            <input type="text" class="form-input" placeholder="Email address" />
+            <input type="text" class="form-input" placeholder="Your name" />
+            <button class="btn primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bento-showcase">
+    <div class="container">
+      <h2>Bento Box Grid System</h2>
+      <div class="bento-grid">
+        <div class="bento-item">
+          <FontAwesome icon="sparkles" style="solid" size="xl" gradient="peaceful-blue" />
+          <h3>Magical Supplies</h3>
+          <p>Discover authentic tools for your spiritual practice</p>
+        </div>
+        <div class="bento-item">
+          <FontAwesome icon="leaf" style="solid" size="xl" gradient="peaceful-green" />
+          <h3>Natural Herbs</h3>
+          <p>Sustainably sourced botanicals for healing</p>
+        </div>
+        <div class="bento-item">
+          <FontAwesome icon="gem" style="solid" size="xl" gradient="peaceful-purple" />
+          <h3>Healing Crystals</h3>
+          <p>Earth's ancient energies crystallized</p>
+        </div>
+        <div class="bento-item">
+          <FontAwesome icon="star" style="solid" size="xl" gradient="peaceful-yellow" />
+          <h3>Divination Tools</h3>
+          <p>Peer beyond the veil of the unknown</p>
+        </div>
+        <div class="bento-item">
+          <FontAwesome icon="sun" style="solid" size="xl" gradient="peaceful-orange" />
+          <h3>Candles & Light</h3>
+          <p>Illuminate your sacred space</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gradient-showcase">
+    <div class="container">
+      <h2>Gradient Collection</h2>
+      <div class="gradient-cards">
+        <div class="gradient-card peaceful">
+          <h3>Peaceful Gradient</h3>
+          <p>Sky blue to lavender</p>
+        </div>
+        <div class="gradient-card sunrise">
+          <h3>Sunrise Gradient</h3>
+          <p>Yellow to orange</p>
+        </div>
+        <div class="gradient-card nature">
+          <h3>Nature Gradient</h3>
+          <p>Green to blue</p>
+        </div>
+        <div class="gradient-card rainbow">
+          <h3>Rainbow Gradient</h3>
+          <p>Full spectrum</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .test-hero {
+    padding: 6rem 0 4rem;
+    background: var(--bg-gradient);
+    text-align: center;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-gray);
+    margin-top: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .color-showcase,
+  .component-showcase,
+  .bento-showcase,
+  .gradient-showcase {
+    padding: 4rem 0;
+  }
+
+  .color-showcase {
+    background: var(--bg-secondary);
+  }
+
+  .gradient-showcase {
+    background: var(--bg-secondary);
+  }
+
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .color-card {
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease;
+  }
+
+  .color-card:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+
+  .color-card h3 {
+    color: white !important;
+    margin: 1rem 0 0.5rem 0;
+    font-size: 1.2rem;
+    background: none !important;
+    -webkit-text-fill-color: white !important;
+  }
+
+  .color-card p {
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .showcase-section {
+    background: var(--pure-white);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .icon-showcase {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .form-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .gradient-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .gradient-card {
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    box-shadow: var(--shadow-large);
+    transition: all 0.3s ease;
+  }
+
+  .gradient-card:hover {
+    transform: translateY(-8px) scale(1.05);
+  }
+
+  .gradient-card.peaceful {
+    background: var(--peaceful-gradient);
+  }
+
+  .gradient-card.sunrise {
+    background: var(--sunrise-gradient);
+  }
+
+  .gradient-card.nature {
+    background: var(--nature-gradient);
+  }
+
+  .gradient-card.rainbow {
+    background: var(--rainbow-gradient);
+  }
+
+  .gradient-card h3 {
+    color: white !important;
+    background: none !important;
+    -webkit-text-fill-color: white !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .gradient-card p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .test-hero {
+      padding: 4rem 0 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .showcase-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .button-group {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .icon-showcase {
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  // Add some interactive elements to test the new design
+  document.addEventListener('DOMContentLoaded', () => {
+    // Test the new cursor sparkle effect
+    document.addEventListener('mousemove', (e) => {
+      if (Math.random() > 0.95) { // Less frequent sparkles for peaceful effect
+        const sparkle = document.createElement('div');
+        sparkle.className = 'cursor-sparkle';
+        sparkle.style.left = e.clientX + 'px';
+        sparkle.style.top = e.clientY + 'px';
+        document.body.appendChild(sparkle);
+        
+        setTimeout(() => {
+          sparkle.remove();
+        }, 800);
+      }
+    });
+
+    // Test fade-in animations
+    const animateElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    });
+
+    animateElements.forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  });
+</script>

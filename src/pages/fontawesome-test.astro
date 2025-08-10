@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FontAwesome from '../components/FontAwesome.astro';
+---
+
+<BaseLayout title="Font Awesome Test - Hearth & Harrow">
+  <section style="padding: 4rem 2rem; text-align: center;">
+    <h1>Font Awesome Test</h1>
+    
+    <!-- Basic HTML icons to test -->
+    <div style="margin: 2rem 0; font-size: 2rem;">
+      <i class="fas fa-star" style="color: gold;"></i>
+      <i class="fas fa-heart" style="color: red;"></i>
+      <i class="fas fa-shopping-cart" style="color: blue;"></i>
+    </div>
+    
+    <div style="display: grid; gap: 2rem; margin: 3rem 0; max-width: 800px; margin-left: auto; margin-right: auto;">
+      
+      <div style="padding: 2rem; border: 1px solid #ccc; border-radius: 10px;">
+        <h2>Gradient Icons</h2>
+        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 1rem 0;">
+          <FontAwesome icon="sparkles" style="solid" size="2xl" gradient="peaceful-blue" />
+          <FontAwesome icon="shopping-cart" style="solid" size="2xl" gradient="peaceful-green" />
+          <FontAwesome icon="heart" style="solid" size="2xl" gradient="peaceful-red" />
+          <FontAwesome icon="leaf" style="solid" size="2xl" gradient="peaceful-green" />
+          <FontAwesome icon="gem" style="solid" size="2xl" gradient="peaceful-purple" />
+        </div>
+      </div>
+      
+      <div style="padding: 2rem; border: 1px solid #ccc; border-radius: 10px;">
+        <h2>Regular Icons</h2>
+        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 1rem 0;">
+          <FontAwesome icon="shopping-cart" style="regular" size="2xl" />
+          <FontAwesome icon="heart" style="regular" size="2xl" />
+          <FontAwesome icon="user" style="regular" size="2xl" />
+          <FontAwesome icon="search" style="solid" size="2xl" />
+          <FontAwesome icon="phone" style="solid" size="2xl" />
+        </div>
+      </div>
+      
+      <div style="padding: 2rem; border: 1px solid #ccc; border-radius: 10px;">
+        <h2>Custom Colors</h2>
+        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 1rem 0;">
+          <FontAwesome icon="sparkles" style="solid" size="3xl" color="#1F75FE" />
+          <FontAwesome icon="leaf" style="solid" size="3xl" color="#22C55E" />
+          <FontAwesome icon="gem" style="solid" size="3xl" color="#A855F7" />
+        </div>
+      </div>
+    </div>
+    
+    <p>If you see icons above, Font Awesome Pro is working correctly!</p>
+    <p>If you see squares or nothing, there may be a loading issue.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  h1, h2 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: #666;
+    margin: 0.5rem 0;
+  }
+  
+  div[style*="border"] {
+    background: #f9f9f9;
+  }
+</style>
