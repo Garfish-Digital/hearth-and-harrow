@@ -1,43 +1,8 @@
 ---
-// Font Awesome Pro Integration Component - Professional SVG Implementation
-import { icon, library, config } from '@fortawesome/fontawesome-svg-core';
-import { 
-  faHeart, 
-  faGem, 
-  faMagic,
-  faLeaf,
-  faMoon,
-  faStar,
-  faSparkles
-} from '@fortawesome/pro-solid-svg-icons';
-import { 
-  faHeart as farHeart,
-  faGem as farGem,
-  faMagic as farMagic
-} from '@fortawesome/pro-regular-svg-icons';
-import { 
-  faHeart as falHeart,
-  faGem as falGem
-} from '@fortawesome/pro-light-svg-icons';
-import {
-  faHeart as fadHeart,
-  faGem as fadGem
-} from '@fortawesome/pro-duotone-svg-icons';
-
-// Configure Font Awesome
-config.autoAddCss = false;
-
-// Add icons to library
-library.add(
-  faHeart, faGem, faMagic, faLeaf, faMoon, faStar, faSparkles,
-  farHeart, farGem, farMagic,
-  falHeart, falGem,
-  fadHeart, fadGem
-);
-
+// Font Awesome Pro Integration Component - Professional CSS Class Implementation
 export interface Props {
   icon: string;
-  style?: 'solid' | 'regular' | 'light' | 'duotone';
+  style?: 'solid' | 'regular' | 'light' | 'duotone' | 'brands';
   size?: 'xs' | 'sm' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl' | '10xl';
   class?: string;
   color?: string;
@@ -45,7 +10,7 @@ export interface Props {
 }
 
 const { 
-  icon: iconName, 
+  icon, 
   style = 'solid', 
   size = 'lg', 
   class: className = '',
@@ -53,57 +18,45 @@ const {
   gradient
 } = Astro.props;
 
-// Map styles to FontAwesome prefix
-const stylePrefix = {
+// Map Font Awesome styles to CSS classes
+const styleMap = {
   solid: 'fas',
-  regular: 'far', 
+  regular: 'far',
   light: 'fal',
-  duotone: 'fad'
+  duotone: 'fad',
+  brands: 'fab'
 };
 
-try {
-  // Generate SVG
-  const iconSvg = icon({ prefix: stylePrefix[style], iconName });
-  const svgHtml = iconSvg.html[0];
-  
-  // Build CSS classes
-  let cssClasses = `fa-icon fa-${size}`;
-  if (gradient) cssClasses += ` ${gradient}`;
-  if (className) cssClasses += ` ${className}`;
-  
-} catch (error) {
-  console.error(`Font Awesome Pro icon error: ${iconName}`, error);
-  // Fallback to simple HTML entity or basic icon
+// Build icon class
+let iconClass = `${styleMap[style]} fa-${icon} fa-${size}`;
+
+// Add gradient class if specified
+if (gradient) {
+  iconClass += ` ${gradient}`;
 }
+
+// Add custom class
+if (className) {
+  iconClass += ` ${className}`;
+}
+
+iconClass = iconClass.trim();
 ---
 
-<span 
-  class={cssClasses} 
-  style={color ? `color: ${color}` : ''}
-  set:html={svgHtml}
-></span>
+<i class={iconClass} style={color ? `color: ${color}` : ''}></i>
 
 <style>
-  /* Font Awesome Pro SVG Styles */
-  .fa-icon {
-    display: inline-block;
-    vertical-align: middle;
+  /* Font Awesome Pro Duotone Styles */
+  .fa-duotone {
+    --fa-secondary-opacity: 0.4;
+    --fa-primary-color: currentColor;
+    --fa-secondary-color: currentColor;
   }
   
-  /* Size classes */
-  .fa-xs { width: 0.75em; height: 0.75em; }
-  .fa-sm { width: 0.875em; height: 0.875em; }
-  .fa-lg { width: 1.25em; height: 1.25em; }
-  .fa-xl { width: 1.5em; height: 1.5em; }
-  .fa-2xl { width: 2em; height: 2em; }
-  .fa-3xl { width: 3em; height: 3em; }
-  .fa-4xl { width: 4em; height: 4em; }
-  .fa-5xl { width: 5em; height: 5em; }
-  .fa-6xl { width: 6em; height: 6em; }
-  .fa-7xl { width: 7em; height: 7em; }
-  .fa-8xl { width: 8em; height: 8em; }
-  .fa-9xl { width: 9em; height: 9em; }
-  .fa-10xl { width: 10em; height: 10em; }
+  /* Ensure icons inherit text color by default */
+  i[class*="fa-"] {
+    color: inherit;
+  }
   
   /* Peaceful gradient colors for icons */
   .peaceful-blue {
@@ -162,12 +115,5 @@ try {
     .peaceful-purple { color: var(--crayola-purple); }
     .peaceful-orange { color: var(--crayola-orange); }
     .peaceful-red { color: var(--crayola-red); }
-  }
-  
-  /* Duotone specific styles for Pro */
-  .fa-icon svg.fa-duotone {
-    --fa-secondary-opacity: 0.4;
-    --fa-primary-color: currentColor;
-    --fa-secondary-color: currentColor;
   }
 </style>
