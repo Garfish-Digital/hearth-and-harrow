@@ -841,9 +841,19 @@ const productsWithSizes = allProducts.map((product, index) => {
             <h4>${item.name}</h4>
             <p class="item-price">$${item.price}</p>
           </div>
-          <button class="remove-item" onclick="(window as any).removeFromCart(${index})">×</button>
+          <button class="remove-item" data-index="${index}">×</button>
         </div>
       `).join('');
+      
+      // Add event listeners to remove buttons
+      const removeButtons = cartItems.querySelectorAll('.remove-item');
+      removeButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement;
+          const index = parseInt(target.getAttribute('data-index') || '0');
+          removeFromCart(index);
+        });
+      });
       
       cartCount.textContent = cart.length.toString();
       cartTotalElement.textContent = cartTotal.toFixed(2);
@@ -866,8 +876,7 @@ const productsWithSizes = allProducts.map((product, index) => {
     }
   }
 
-  // Make removeFromCart globally accessible
-  (window as any).removeFromCart = removeFromCart;
+  // Remove the global window assignment - using event delegation instead
 
   // Scroll to Featured Treasures section
   function scrollToFeaturedTreasures() {
