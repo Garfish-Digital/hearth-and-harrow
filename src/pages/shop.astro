@@ -470,23 +470,23 @@ const productsWithSizes = allProducts.map((product, index) => {
   }
 
   .add-to-cart-btn {
-    flex: 0 0 auto; // Don't grow or shrink, size to content
-    padding: 0.4rem 0.8rem;
-    background: var(--ethereal-gradient);
-    color: var(--moonlight-silver);
+    flex: 0 0 auto;
+    display: inline-block;
+    padding: 0.875rem 1.5rem;
+    background: var(--crayola-green);
+    color: var(--pure-white);
     border: none;
-    border-radius: 15px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: none;
     font-size: 0.65rem;
-    white-space: nowrap; // Prevent text wrapping
-    height: 2rem; // Fixed height for uniformity
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    white-space: nowrap;
+    text-decoration: none;
   }
 
   // Content adjustments for horizontal cards
@@ -515,14 +515,30 @@ const productsWithSizes = allProducts.map((product, index) => {
 
   .bento-small-horizontal .add-to-cart-btn,
   .bento-large-horizontal .add-to-cart-btn {
-    padding: 0.3rem 0.6rem;
+    padding: 0.6rem 1.2rem;
     font-size: 0.6rem;
-    height: 1.8rem; // Slightly smaller for horizontal cards
+  }
+
+  // Shimmer effect for Add to Cart buttons
+  .add-to-cart-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
   }
 
   .add-to-cart-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(184, 148, 95, 0.3);
+    background: var(--peaceful-green);
+    color: var(--text-gray);
+    box-shadow: var(--shadow-colored);
+  }
+
+  .add-to-cart-btn:hover::before {
+    left: 100%;
   }
 
   // Shopping Cart Styles
@@ -626,21 +642,43 @@ const productsWithSizes = allProducts.map((product, index) => {
 
   .checkout-btn {
     width: 100%;
-    padding: 1rem;
-    background: var(--ethereal-gradient);
-    color: var(--moonlight-silver);
+    display: inline-block;
+    padding: 0.875rem 2.5rem;
+    background: var(--crayola-green);
+    color: var(--pure-white);
     border: none;
-    border-radius: 30px;
+    border-radius: 50px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    text-transform: none;
+    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    text-decoration: none;
+  }
+
+  // Shimmer effect for Checkout button
+  .checkout-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
   }
 
   .checkout-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(184, 148, 95, 0.3);
+    background: var(--peaceful-green);
+    color: var(--text-gray);
+    box-shadow: var(--shadow-colored);
+  }
+
+  .checkout-btn:hover::before {
+    left: 100%;
   }
 
   .cart-toggle {
@@ -737,9 +775,8 @@ const productsWithSizes = allProducts.map((product, index) => {
     }
 
     .add-to-cart-btn {
-      padding: 0.3rem 0.6rem;
+      padding: 0.6rem 1.2rem;
       font-size: 0.6rem;
-      height: 1.8rem; // Consistent height on mobile
     }
 
     .bento-small-horizontal .product-info,
@@ -778,13 +815,20 @@ const productsWithSizes = allProducts.map((product, index) => {
   import { gsap } from 'gsap';
 
   // Shopping Cart Functionality
-  let cart = [];
+  interface CartItem {
+    name: string;
+    price: number;
+  }
+  
+  let cart: CartItem[] = [];
   let cartTotal = 0;
 
   function updateCartDisplay() {
     const cartItems = document.getElementById('cart-items');
     const cartCount = document.getElementById('cart-count');
     const cartTotalElement = document.getElementById('cart-total');
+
+    if (!cartItems || !cartCount || !cartTotalElement) return;
 
     if (cart.length === 0) {
       cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
@@ -797,7 +841,7 @@ const productsWithSizes = allProducts.map((product, index) => {
             <h4>${item.name}</h4>
             <p class="item-price">$${item.price}</p>
           </div>
-          <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+          <button class="remove-item" onclick="(window as any).removeFromCart(${index})">×</button>
         </div>
       `).join('');
       
@@ -806,26 +850,24 @@ const productsWithSizes = allProducts.map((product, index) => {
     }
   }
 
-  function addToCart(productName, price) {
+  function addToCart(productName: string, price: string) {
     cart.push({ name: productName, price: parseFloat(price) });
     cartTotal += parseFloat(price);
     updateCartDisplay();
     
-    // Show cart briefly
-    const cartElement = document.getElementById('shopping-cart');
-    cartElement.classList.add('open');
-    setTimeout(() => {
-      if (!cartElement.matches(':hover')) {
-        cartElement.classList.remove('open');
-      }
-    }, 2000);
+    // Cart only opens via cart-toggle button - removed auto-opening behavior
   }
 
-  function removeFromCart(index) {
-    cartTotal -= cart[index].price;
-    cart.splice(index, 1);
-    updateCartDisplay();
+  function removeFromCart(index: number) {
+    if (index >= 0 && index < cart.length) {
+      cartTotal -= cart[index].price;
+      cart.splice(index, 1);
+      updateCartDisplay();
+    }
   }
+
+  // Make removeFromCart globally accessible
+  (window as any).removeFromCart = removeFromCart;
 
   // Scroll to Featured Treasures section
   function scrollToFeaturedTreasures() {
@@ -839,7 +881,7 @@ const productsWithSizes = allProducts.map((product, index) => {
   }
 
   // GSAP-powered Product Filtering with smooth animations
-  function filterProducts(category) {
+  function filterProducts(category: string) {
     const productCards = document.querySelectorAll('.product-card[data-category]');
     const filterButtons = document.querySelectorAll('.filter-btn');
     
@@ -994,7 +1036,7 @@ const productsWithSizes = allProducts.map((product, index) => {
     });
 
     // Checkout button
-    document.getElementById('checkout-btn').addEventListener('click', () => {
+    document.getElementById('checkout-btn')?.addEventListener('click', () => {
       if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
