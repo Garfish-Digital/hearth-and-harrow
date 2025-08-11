@@ -5,6 +5,24 @@ import productsData from '../../data/products.json';
 // Get all products for the bento box showcase
 const allProducts = productsData.products;
 const categories = productsData.categories;
+
+// Bento size assignment - 4 size types per category (3 of each)
+const bentoSizes = ['small-vertical', 'small-vertical', 'small-vertical', 
+                   'large-vertical', 'large-vertical', 'large-vertical',
+                   'small-horizontal', 'small-horizontal', 'small-horizontal',
+                   'large-horizontal', 'large-horizontal', 'large-horizontal'];
+
+// Assign bento sizes to products
+const productsWithSizes = allProducts.map((product, index) => {
+  const categoryProducts = allProducts.filter(p => p.category === product.category);
+  const productIndex = categoryProducts.findIndex(p => p.id === product.id);
+  const sizeIndex = productIndex % 12; // Cycle through the 12 size assignments
+  
+  return {
+    ...product,
+    bentoSize: bentoSizes[sizeIndex]
+  };
+});
 ---
 
 <BaseLayout title="Shop - Hearth & Harrow" description="Explore our mystical collections of herbs, crystals, and divination tools">
@@ -25,7 +43,7 @@ const categories = productsData.categories;
         {categories.map(category => {
           const categoryProducts = productsData.products.filter(p => p.category === category.id);
           return (
-            <a href={`/shop/${category.id}`} class="category-card mystical-card large-card">
+            <button class="category-card mystical-card large-card" data-filter={category.id}>
               <div class={`card-background ${category.id}-bg`}></div>
               <div class="card-content">
                 <div class="card-icon">{category.icon}</div>
@@ -33,7 +51,7 @@ const categories = productsData.categories;
                 <p>{category.description}</p>
                 <span class="item-count">{categoryProducts.length} Items</span>
               </div>
-            </a>
+            </button>
           );
         })}
       </div>
@@ -43,7 +61,7 @@ const categories = productsData.categories;
   <!-- Featured Products -->
   <section class="featured-products">
     <div class="container">
-      <h2 class="scroll-animate" data-animation="bounceInUp" data-delay="0">Featured Treasures</h2>
+      <h2 class="scroll-animate" id="featured-treasures" data-animation="bounceInUp" data-delay="0">Featured Treasures</h2>
       
       <!-- Filter Buttons -->
       <div class="filter-buttons">
@@ -55,18 +73,20 @@ const categories = productsData.categories;
 
       <!-- Products Bento Grid -->
       <div class="products-bento-grid" id="products-grid">
-        {allProducts.map(product => {
+        {productsWithSizes.map(product => {
           const categoryName = categories.find(c => c.id === product.category)?.name || product.category;
           return (
-            <div class={`product-card bento-item scroll-animate`} data-category={product.category} data-animation="gentleBounceIn" data-delay="0">
+            <div class={`product-card bento-item bento-${product.bentoSize} scroll-animate`} data-category={product.category} data-bento-size={product.bentoSize} data-animation="gentleBounceIn" data-delay="0">
               <div class="product-image">
                 <div class={`product-placeholder ${product.placeholder}`}></div>
               </div>
               <div class="product-info">
                 <h3>{product.name}</h3>
+                <div class="price-button-container">
                 <p class="product-category">{categoryName}</p>
-                <p class="product-price">${product.price}</p>
-                <button class="add-to-cart-btn" data-product={product.name} data-price={product.price.toString()}>Add to Cart</button>
+                  <p class="product-price">${product.price}</p>
+                </div>
+                  <button class="add-to-cart-btn" data-product={product.name} data-price={product.price.toString()}>Add to Cart</button>
               </div>
             </div>
           );
@@ -94,7 +114,8 @@ const categories = productsData.categories;
 
   <!-- Cart Toggle Button -->
   <button id="cart-toggle" class="cart-toggle">
-    🛒 <span id="cart-count">0</span>
+    <div class="shopping-icon"><i class="fas fa-basket-shopping"></i></div>
+     <span id="cart-count">0</span>
   </button>
 </BaseLayout>
 
@@ -136,10 +157,17 @@ const categories = productsData.categories;
     color: var(--pure-white);
     background: var(--crayola-purple);
     border-radius: 15px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
   }
 
   .large-card:hover {
-    color: inherit;
+    color: var(--pure-white);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 
   .card-background {
@@ -197,10 +225,11 @@ const categories = productsData.categories;
     margin-bottom: 2rem;
     font-size: 1.1rem;
     line-height: 1.6;
+    color: var(--pure-white);
   }
 
   .item-count {
-    color: var(--muted-gold);
+    color: var(--pure-white);
     font-weight: 500;
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -251,18 +280,15 @@ const categories = productsData.categories;
     transform: translateY(-2px);
   }
 
-  // Bento Box Grid System
+  // Bento Box Flexbox System
   .products-bento-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
     padding: 1rem 0;
-  }
-
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    min-height: 60vh;
   }
 
   .product-card {
@@ -274,6 +300,39 @@ const categories = productsData.categories;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     transform-origin: center;
+    flex-shrink: 0;
+  }
+
+  // Bento Card Sizes (Base: 200px unit)
+  .bento-small-vertical {
+    width: 200px;
+    height: 320px;
+  }
+  
+  .bento-large-vertical {
+    width: 240px;
+    height: 380px;
+  }
+  
+  .bento-small-horizontal {
+    width: 320px;
+    height: 200px;
+  }
+  
+  .bento-large-horizontal {
+    width: 380px;
+    height: 240px;
+  }
+
+  // Adjust product-image height based on card orientation
+  .bento-small-horizontal .product-image,
+  .bento-large-horizontal .product-image {
+    height: 90px;
+  }
+  
+  .bento-small-vertical .product-image,
+  .bento-large-vertical .product-image {
+    height: 160px;
   }
 
   .product-card:hover {
@@ -298,11 +357,17 @@ const categories = productsData.categories;
     opacity: 1;
   }
 
-  // Filter animation states
+  // Filter animation states for Bento layout
   .product-card.hidden {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.1);
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
     pointer-events: none;
+    overflow: hidden;
   }
 
   .product-card.visible {
@@ -323,193 +388,136 @@ const categories = productsData.categories;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
-    color: var(--muted-gold);
     position: relative;
   }
 
-  .sage-placeholder {
-    background: linear-gradient(45deg, var(--forest-green), var(--sage-green));
-  }
-
-  .amethyst-placeholder {
-    background: linear-gradient(45deg, var(--rich-purple), #8a5aa8);
-  }
-
-  .tarot-placeholder {
-    background: linear-gradient(45deg, var(--deep-forest-blue), var(--rich-purple));
-  }
-
-  .pendant-placeholder {
-    background: linear-gradient(45deg, var(--muted-gold), var(--natural-wood));
-  }
-
-  .frankincense-placeholder {
-    background: linear-gradient(45deg, var(--earth-brown), var(--natural-wood));
-  }
-
-  .quartz-placeholder {
-    background: linear-gradient(45deg, #ffffff20, var(--moonlight-silver));
-  }
-
-  // Additional product placeholders
-  .lavender-placeholder {
-    background: linear-gradient(45deg, #8B7FC7, #C9A9DD);
-  }
-
-  .dragons-blood-placeholder {
-    background: linear-gradient(45deg, #8B0000, #CD5C5C);
-  }
-
-  .palo-santo-placeholder {
-    background: linear-gradient(45deg, #8B7355, #D2B48C);
-  }
-
-  .mugwort-placeholder {
-    background: linear-gradient(45deg, #556B2F, #9ACD32);
-  }
-
-  .copal-placeholder {
-    background: linear-gradient(45deg, #DAA520, #FFD700);
-  }
-
-  .cedar-placeholder {
-    background: linear-gradient(45deg, #A0522D, #CD853F);
-  }
-
-  .rose-placeholder {
-    background: linear-gradient(45deg, #DC143C, #FFB6C1);
-  }
-
-  .myrrh-placeholder {
-    background: linear-gradient(45deg, #8B4513, #F4A460);
-  }
-
-  .juniper-placeholder {
-    background: linear-gradient(45deg, #2F4F4F, #708090);
-  }
-
-  .benzoin-placeholder {
-    background: linear-gradient(45deg, #DEB887, #F5DEB3);
-  }
-
-  .rose-quartz-placeholder {
-    background: linear-gradient(45deg, #F8BBD9, #FFE4E1);
-  }
-
-  .tourmaline-placeholder {
-    background: linear-gradient(45deg, #2F2F2F, #4F4F4F);
-  }
-
-  .selenite-placeholder {
-    background: linear-gradient(45deg, #F5F5F5, #FFFFFF);
-  }
-
-  .labradorite-placeholder {
-    background: linear-gradient(45deg, #2F4F4F, #4682B4);
-  }
-
-  .citrine-placeholder {
-    background: linear-gradient(45deg, #FFD700, #FFA500);
-  }
-
-  .moonstone-placeholder {
-    background: linear-gradient(45deg, #E6E6FA, #F0F8FF);
-  }
-
-  .hematite-placeholder {
-    background: linear-gradient(45deg, #36454F, #708090);
-  }
-
-  .garnet-placeholder {
-    background: linear-gradient(45deg, #8B0000, #DC143C);
-  }
-
-  .fluorite-placeholder {
-    background: linear-gradient(45deg, #32CD32, #90EE90);
-  }
-
-  .obsidian-placeholder {
-    background: linear-gradient(45deg, #000000, #2F2F2F);
-  }
-
-  .crystal-ball-placeholder {
-    background: linear-gradient(45deg, #F0F8FF, #E6E6FA);
-  }
-
-  .runes-placeholder {
-    background: linear-gradient(45deg, #8B4513, #D2691E);
-  }
-
-  .chalice-placeholder {
-    background: linear-gradient(45deg, #B8860B, #FFD700);
-  }
-
-  .wand-placeholder {
-    background: linear-gradient(45deg, #CD853F, #F4A460);
-  }
-
-  .cauldron-placeholder {
-    background: linear-gradient(45deg, #2F2F2F, #696969);
-  }
-
-  .oracle-placeholder {
-    background: linear-gradient(45deg, #191970, #4B0082);
-  }
-
-  .pendulum-placeholder {
-    background: linear-gradient(45deg, #9370DB, #DDA0DD);
-  }
-
-  .athame-placeholder {
-    background: linear-gradient(45deg, #C0C0C0, #2F2F2F);
-  }
-
-  .goddess-placeholder {
-    background: linear-gradient(45deg, #F5DEB3, #DEB887);
-  }
-
-  .cloth-placeholder {
-    background: linear-gradient(45deg, #000000, #4B0082);
-  }
+  // 36 Simple Color Swatches for Products
+  .sage-placeholder { background: #8FBC8F; }
+  .amethyst-placeholder { background: #9966CC; }
+  .tarot-placeholder { background: #4B0082; }
+  .pendant-placeholder { background: #DAA520; }
+  .frankincense-placeholder { background: #D2B48C; }
+  .quartz-placeholder { background: #F5F5F5; }
+  .lavender-placeholder { background: #E6E6FA; }
+  .dragons-blood-placeholder { background: #8B0000; }
+  .palo-santo-placeholder { background: #DEB887; }
+  .mugwort-placeholder { background: #9ACD32; }
+  .copal-placeholder { background: #FFD700; }
+  .cedar-placeholder { background: #A0522D; }
+  .rose-placeholder { background: #FFB6C1; }
+  .myrrh-placeholder { background: #CD853F; }
+  .juniper-placeholder { background: #708090; }
+  .benzoin-placeholder { background: #F5DEB3; }
+  .rose-quartz-placeholder { background: #F8BBD9; }
+  .tourmaline-placeholder { background: #2F4F4F; }
+  .selenite-placeholder { background: #FFFAFA; }
+  .labradorite-placeholder { background: #4682B4; }
+  .citrine-placeholder { background: #FFA500; }
+  .moonstone-placeholder { background: #F0F8FF; }
+  .hematite-placeholder { background: #696969; }
+  .garnet-placeholder { background: #DC143C; }
+  .fluorite-placeholder { background: #90EE90; }
+  .obsidian-placeholder { background: #000000; }
+  .crystal-ball-placeholder { background: #E6E6FA; }
+  .runes-placeholder { background: #D2691E; }
+  .chalice-placeholder { background: #B8860B; }
+  .wand-placeholder { background: #CD853F; }
+  .cauldron-placeholder { background: #2F2F2F; }
+  .oracle-placeholder { background: #191970; }
+  .pendulum-placeholder { background: #DDA0DD; }
+  .athame-placeholder { background: #C0C0C0; }
+  .goddess-placeholder { background: #DEB887; }
+  .cloth-placeholder { background: #4B0082; }
 
   .product-info {
-    padding: 1.5rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 180px); // Subtract image height for vertical cards
   }
 
   .product-info h3 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     color: var(--muted-gold);
-    font-size: 1.3rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    font-weight: 600;
   }
 
   .product-category {
     color: var(--sage-green);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 0.5rem;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+  }
+
+  .price-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto; // Push to bottom
   }
 
   .product-price {
-    font-size: 1.5rem;
+    font-size: .6rem;
     font-weight: 600;
     color: var(--muted-gold);
-    margin-bottom: 1.5rem;
+    margin: 0;
+    flex-shrink: 0;
   }
 
   .add-to-cart-btn {
-    width: 100%;
-    padding: 0.75rem;
+    flex: 0 0 auto; // Don't grow or shrink, size to content
+    padding: 0.4rem 0.8rem;
     background: var(--ethereal-gradient);
     color: var(--moonlight-silver);
     border: none;
-    border-radius: 30px;
+    border-radius: 15px;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 0.65rem;
+    white-space: nowrap; // Prevent text wrapping
+    height: 2rem; // Fixed height for uniformity
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Content adjustments for horizontal cards
+  .bento-small-horizontal .product-info,
+  .bento-large-horizontal .product-info {
+    height: calc(100% - 120px); // Subtract image height for horizontal cards
+    padding: 0.4rem;
+  }
+
+  .bento-small-horizontal .product-info h3,
+  .bento-large-horizontal .product-info h3 {
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .bento-small-horizontal .product-category,
+  .bento-large-horizontal .product-category {
+    font-size: 0.6rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .bento-small-horizontal .product-price,
+  .bento-large-horizontal .product-price {
+    font-size: 0.9rem;
+  }
+
+  .bento-small-horizontal .add-to-cart-btn,
+  .bento-large-horizontal .add-to-cart-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.6rem;
+    height: 1.8rem; // Slightly smaller for horizontal cards
   }
 
   .add-to-cart-btn:hover {
@@ -524,7 +532,7 @@ const categories = productsData.categories;
     right: -400px;
     width: 400px;
     height: 100vh;
-    background: var(--mystical-gradient);
+    background: var(--light-gray);
     border-left: 2px solid var(--muted-gold);
     z-index: 2000;
     transition: right 0.3s ease;
@@ -682,13 +690,81 @@ const categories = productsData.categories;
       grid-template-columns: 1fr;
     }
 
-    .products-grid {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    // Mobile Bento Card Sizes (Smaller base unit)
+    .bento-small-vertical, .bento-large-vertical {
+      width: 160px;
+      height: 240px;
+    }
+    
+    .bento-small-horizontal, .bento-large-horizontal {
+      width: 240px;
+      height: 160px;
+    }
+
+    .bento-small-horizontal .product-image,
+    .bento-large-horizontal .product-image {
+      height: 100px;
+    }
+    
+    .bento-small-vertical .product-image,
+    .bento-large-vertical .product-image {
+      height: 140px;
+    }
+
+    .products-bento-grid {
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    // Mobile content scaling
+    .product-info {
+      padding: 0.4rem;
+      height: calc(100% - 140px); // Adjust for mobile image heights
+    }
+
+    .product-info h3 {
+      font-size: 0.8rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .product-category {
+      font-size: 0.55rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-price {
+      font-size: 0.85rem;
+    }
+
+    .add-to-cart-btn {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.6rem;
+      height: 1.8rem; // Consistent height on mobile
+    }
+
+    .bento-small-horizontal .product-info,
+    .bento-large-horizontal .product-info {
+      height: calc(100% - 100px);
+      padding: 0.35rem;
+    }
+
+    .bento-small-horizontal .product-info h3,
+    .bento-large-horizontal .product-info h3 {
+      font-size: 0.75rem;
+    }
+
+    .bento-small-horizontal .product-price,
+    .bento-large-horizontal .product-price {
+      font-size: 0.8rem;
     }
 
     .shopping-cart {
       width: 100%;
       right: -100%;
+    }
+
+    .shopping-icon i {
+        color: var(--crayola-green);
     }
 
     .hero-content h1 {
@@ -698,6 +774,9 @@ const categories = productsData.categories;
 </style>
 
 <script>
+  // Import GSAP for smooth animations
+  import { gsap } from 'gsap';
+
   // Shopping Cart Functionality
   let cart = [];
   let cartTotal = 0;
@@ -748,26 +827,112 @@ const categories = productsData.categories;
     updateCartDisplay();
   }
 
-  // Product Filtering Functionality
+  // Scroll to Featured Treasures section
+  function scrollToFeaturedTreasures() {
+    const featuredSection = document.getElementById('featured-treasures');
+    if (featuredSection) {
+      featuredSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  }
+
+  // GSAP-powered Product Filtering with smooth animations
   function filterProducts(category) {
     const productCards = document.querySelectorAll('.product-card[data-category]');
     const filterButtons = document.querySelectorAll('.filter-btn');
     
     // Update active button
     filterButtons.forEach(btn => btn.classList.remove('active'));
-    document.querySelector(`[data-filter="${category}"]`).classList.add('active');
+    const targetButton = document.querySelector(`.filter-btn[data-filter="${category}"]`);
+    if (targetButton) {
+      targetButton.classList.add('active');
+    }
+    
+    // Arrays for visible and hidden cards
+    const toShow: Element[] = [];
+    const toHide: Element[] = [];
     
     productCards.forEach(card => {
       const productCategory = card.getAttribute('data-category');
       
       if (category === 'all' || productCategory === category) {
-        card.classList.remove('hidden');
-        card.classList.add('visible');
+        toShow.push(card);
       } else {
-        card.classList.add('hidden');
-        card.classList.remove('visible');
+        toHide.push(card);
       }
     });
+
+    // Create timeline for smooth filtering
+    const tl = gsap.timeline();
+
+    // First, hide cards that need to be hidden
+    if (toHide.length > 0) {
+      tl.to(toHide, {
+        duration: 0.5,
+        opacity: 0,
+        scale: 0.1,
+        ease: "power1.inOut",
+        stagger: 0.02,
+        onComplete: () => {
+          toHide.forEach(card => {
+            card.classList.add('hidden');
+            card.classList.remove('visible');
+            // Clean up dimensions after animation
+            gsap.set(card, { width: 0, height: 0, margin: 0, padding: 0 });
+          });
+        }
+      });
+    }
+
+    // Then, show cards that need to be visible
+    if (toShow.length > 0) {
+      // Reset dimensions for cards being shown
+      toShow.forEach(card => {
+        if (card.classList.contains('hidden')) {
+          card.classList.remove('hidden');
+          card.classList.add('visible');
+          
+          // Reset to appropriate size based on bento-size
+          const bentoSize = card.getAttribute('data-bento-size');
+          let width, height;
+          
+          if (window.innerWidth <= 768) {
+            // Mobile sizes
+            switch(bentoSize) {
+              case 'small-vertical':
+              case 'large-vertical':
+                width = 160; height = 240; break;
+              case 'small-horizontal':
+              case 'large-horizontal':
+                width = 240; height = 160; break;
+            }
+          } else {
+            // Desktop sizes
+            switch(bentoSize) {
+              case 'small-vertical':
+                width = 200; height = 320; break;
+              case 'large-vertical':
+                width = 240; height = 380; break;
+              case 'small-horizontal':
+                width = 320; height = 200; break;
+              case 'large-horizontal':
+                width = 380; height = 240; break;
+            }
+          }
+          
+          gsap.set(card, { width: width, height: height, opacity: 0, scale: 0.1 });
+          gsap.to(card, {
+            duration: 0.6,
+            opacity: 1,
+            scale: 1,
+            ease: "power2.out",
+            delay: 0.1
+          });
+        }
+      });
+    }
   }
 
   // Event Listeners
@@ -780,28 +945,52 @@ const categories = productsData.categories;
     // Filter button functionality
     document.querySelectorAll('.filter-btn').forEach(button => {
       button.addEventListener('click', (e) => {
-        const filter = e.target.getAttribute('data-filter');
-        filterProducts(filter);
+        const target = e.target as HTMLElement;
+        const filter = target?.getAttribute('data-filter');
+        if (filter) {
+          filterProducts(filter);
+        }
+      });
+    });
+
+    // Category card functionality
+    document.querySelectorAll('.category-card').forEach(button => {
+      button.addEventListener('click', (e) => {
+        // Find the closest .category-card element (handles clicks on child elements)
+        const categoryCard = (e.target as HTMLElement).closest('.category-card') as HTMLElement;
+        const filter = categoryCard?.getAttribute('data-filter');
+        if (filter) {
+          console.log('Category card clicked:', filter); // Debug log
+          // Filter products
+          filterProducts(filter);
+          // Scroll to featured treasures section
+          setTimeout(() => {
+            scrollToFeaturedTreasures();
+          }, 100); // Small delay to ensure filtering starts first
+        }
       });
     });
 
     // Add to cart buttons
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
       button.addEventListener('click', (e) => {
-        const productName = e.target.getAttribute('data-product');
-        const price = e.target.getAttribute('data-price');
-        addToCart(productName, price);
+        const target = e.target as HTMLElement;
+        const productName = target?.getAttribute('data-product');
+        const price = target?.getAttribute('data-price');
+        if (productName && price) {
+          addToCart(productName, price);
+        }
       });
     });
 
     // Cart toggle
-    document.getElementById('cart-toggle').addEventListener('click', () => {
-      document.getElementById('shopping-cart').classList.toggle('open');
+    document.getElementById('cart-toggle')?.addEventListener('click', () => {
+      document.getElementById('shopping-cart')?.classList.toggle('open');
     });
 
     // Close cart
-    document.getElementById('close-cart').addEventListener('click', () => {
-      document.getElementById('shopping-cart').classList.remove('open');
+    document.getElementById('close-cart')?.addEventListener('click', () => {
+      document.getElementById('shopping-cart')?.classList.remove('open');
     });
 
     // Checkout button

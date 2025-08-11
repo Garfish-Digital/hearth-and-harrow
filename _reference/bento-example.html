@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bento Box Showcase (Flexbox)</title>
+    <style>
+        :root {
+            --green: #4CAF50;
+            --yellow: #FFC107;
+            --blue: #2196F3;
+            --base-size: 150px; /* This is our base unit for sizing */
+            --gap: 0.5rem;
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f0f2f5;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .filter-buttons button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-buttons button:hover {
+            opacity: 0.8;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            min-height: 80vh;
+        }
+
+        .card {
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            margin: var(--gap); /* Use margins for gaps */
+        }
+
+        /* Card Colors */
+        .herb { background-color: var(--green); }
+        .crystal { background-color: var(--yellow); }
+        .divination { background-color: var(--blue); }
+
+        /* Card Sizes (Flexbox) */
+        .tall {
+            width: var(--base-size);
+            height: calc(var(--base-size) * 2); /* 1x3 ratio */
+        }
+        .wide {
+            width: calc(var(--base-size) * 2);
+            height: var(--base-size); /* 3x1 ratio */
+        }
+        .x-tall {
+            width: calc(var(--base-size) * 1.5);
+            height: calc(var(--base-size) * 2); /* 1.5x4.5 ratio */
+        }
+        .x-wide {
+            width: calc(var(--base-size) * 2);
+            height: calc(var(--base-size) * 1.5); /* 4.5x1.5 ratio */
+        }
+
+        /* Filtered State */
+        .card.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            height: 0;
+            width: 0;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="filter-buttons">
+        <button id="filter-all">All</button>
+        <button id="filter-herb">Herbs</button>
+        <button id="filter-crystal">Crystals</button>
+        <button id="filter-divination">Divination</button>
+    </div>
+
+    <div class="cards-container">
+        <div class="card herb tall">Herb 1</div>
+        <div class="card herb tall">Herb 2</div>
+        <div class="card herb tall">Herb 3</div>
+        <div class="card herb x-tall">Herb 4</div>
+        <div class="card herb x-tall">Herb 5</div>
+        <div class="card herb x-tall">Herb 6</div>
+        <div class="card herb wide">Herb 7</div>
+        <div class="card herb wide">Herb 8</div>
+        <div class="card herb wide">Herb 9</div>
+        <div class="card herb x-wide">Herb 10</div>
+        <div class="card herb x-wide">Herb 11</div>
+        <div class="card herb x-wide">Herb 12</div>
+
+        <div class="card crystal tall">Crystal 1</div>
+        <div class="card crystal tall">Crystal 2</div>
+        <div class="card crystal tall">Crystal 3</div>
+        <div class="card crystal x-tall">Crystal 4</div>
+        <div class="card crystal x-tall">Crystal 5</div>
+        <div class="card crystal x-tall">Crystal 6</div>
+        <div class="card crystal wide">Crystal 7</div>
+        <div class="card crystal wide">Crystal 8</div>
+        <div class="card crystal wide">Crystal 9</div>
+        <div class="card crystal x-wide">Crystal 10</div>
+        <div class="card crystal x-wide">Crystal 11</div>
+        <div class="card crystal x-wide">Crystal 12</div>
+
+        <div class="card divination tall">Divination 1</div>
+        <div class="card divination tall">Divination 2</div>
+        <div class="card divination tall">Divination 3</div>
+        <div class="card divination x-tall">Divination 4</div>
+        <div class="card divination x-tall">Divination 5</div>
+        <div class="card divination x-tall">Divination 6</div>
+        <div class="card divination wide">Divination 7</div>
+        <div class="card divination wide">Divination 8</div>
+        <div class="card divination wide">Divination 9</div>
+        <div class="card divination x-wide">Divination 10</div>
+        <div class="card divination x-wide">Divination 11</div>
+        <div class="card divination x-wide">Divination 12</div>
+    </div>
+
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-buttons button');
+        const cards = document.querySelectorAll('.card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.id.replace('filter-', '');
+                cards.forEach(card => {
+                    const isVisible = filter === 'all' || card.classList.contains(filter);
+                    if (isVisible) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

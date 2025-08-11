@@ -32,14 +32,7 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
         <h3 class="hero-title">Hearth & Harrow</h3>
         <ul class="nav-links">
           <li><a href="/">Home</a></li>
-          <li class="dropdown">
-            <a href="/shop">Shop</a>
-            <ul class="dropdown-menu">
-              <li><a href="/shop/herbs-resins">Herbs & Resins</a></li>
-              <li><a href="/shop/crystals">Crystals</a></li>
-              <li><a href="/shop/divination">Divination Tools</a></li>
-            </ul>
-          </li>
+          <li><a href="/shop">Shop</a></li>
           <li><a href="/about">About Us</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
@@ -146,51 +139,6 @@ const { title, description = "Hearth & Harrow - Authentic Pagan & Occult Supplie
       color: var(--crayola-purple);
     }
 
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: var(--pure-white);
-      border: 1px solid rgba(168, 85, 247, 0.2);
-      border-radius: 10px;
-      padding: 0.5rem 0;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.3s ease;
-      min-width: 200px;
-      box-shadow: var(--shadow-medium);
-      list-style: none;
-    }
-
-    .dropdown:hover .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .dropdown-menu li {
-      padding: 0;
-      list-style: none;
-    }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 0.75rem 1.5rem;
-      text-transform: none;
-      letter-spacing: normal;
-      border-radius: 0;
-      color: var(--text-gray);
-    }
-
-    .dropdown-menu a:hover {
-      background: rgba(168, 85, 247, 0.1);
-      color: var(--crayola-purple);
-    }
 
     .mobile-menu-toggle {
       display: none;

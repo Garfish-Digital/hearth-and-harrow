@@ -42,17 +42,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="philosophy">
     <div class="container">
       <div class="philosophy-grid">
-        <div class="philosophy-card mystical-card scroll-animate" data-animation="rubberBand" data-delay="0">
+        <div class="philosophy-card mystical-card scroll-animate" data-animation="peacefulFloat" data-delay="0">
           <div class="card-icon">🤝</div>
           <h3>Community & Respect</h3>
           <p>We honor the diverse traditions from which our practices spring, fostering a community built on mutual respect and shared wisdom.</p>
         </div>
-        <div class="philosophy-card mystical-card scroll-animate" data-animation="rubberBand" data-delay="350">
+        <div class="philosophy-card mystical-card scroll-animate" data-animation="peacefulFloat" data-delay="350">
           <div class="card-icon">📚</div>
           <h3>Knowledge Sharing</h3>
           <p>True wisdom grows when shared. We provide not just tools, but guidance and education to support your spiritual journey.</p>
         </div>
-        <div class="philosophy-card mystical-card scroll-animate" data-animation="rubberBand" data-delay="700">
+        <div class="philosophy-card mystical-card scroll-animate" data-animation="peacefulFloat" data-delay="700">
           <div class="card-icon">🌍</div>
           <h3>Earth Connection</h3>
           <p>Our practices are rooted in respect for the natural world. We source responsibly and support conservation efforts worldwide.</p>
@@ -66,29 +66,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <h2 class="scroll-animate" data-animation="bounceInUp" data-delay="0">The Circle</h2>
       <div class="team-grid">
-        <div class="team-member mystical-card scroll-animate" data-animation="rubberBand" data-delay="0">
+        <div class="team-member mystical-card scroll-animate" data-animation="peacefulFloat" data-delay="0">
           <div class="member-avatar">
             <div class="avatar-placeholder keeper1"></div>
           </div>
-          <h3>Sage Moonweaver</h3>
+          <h3>Jean "Fox" Moore</h3>
           <p class="member-role">Herbalist & Founder</p>
-          <p>With over 25 years of experience in botanical healing, Sage curates our herb and resin collection with profound knowledge of traditional uses and sustainable sourcing.</p>
+          <p>With over 25 years of experience in botanical healing, Fox curates our herb and resin collection with profound knowledge of traditional uses and sustainable sourcing.</p>
         </div>
-        <div class="team-member mystical-card scroll-animate" data-animation="rubberBand" data-delay="350">
+        <div class="team-member mystical-card scroll-animate" data-animation="peacefulFloat" data-delay="350">
           <div class="member-avatar">
             <div class="avatar-placeholder keeper2"></div>
           </div>
-          <h3>Crystal Stormwright</h3>
+          <h3>Alex Sandoval</h3>
           <p class="member-role">Stone Keeper</p>
-          <p>A master of crystalline energies, Crystal travels the world to source our gemstone collection, ensuring each piece carries the pure essence of Earth's ancient wisdom.</p>
+          <p>A master of crystalline energies, Alex travels the country to source our gemstone collection, ensuring each piece carries the pure essence of Earth's ancient wisdom.</p>
         </div>
-        <div class="team-member mystical-card scroll-animate" data-animation="rubberBand" data-delay="700">
+        <div class="team-member mystical-card scroll-animate" data-animation="peacefulFloat" data-delay="700">
           <div class="member-avatar">
             <div class="avatar-placeholder keeper3"></div>
           </div>
-          <h3>Raven Starseeker</h3>
+          <h3>Aime Russell</h3>
           <p class="member-role">Divination Master</p>
-          <p>Skilled in multiple divination traditions, Raven selects our tarot decks, runes, and scrying tools with an intuitive understanding of their divinatory potential.</p>
+          <p>Skilled in multiple divination traditions, Aime selects our tarot decks, runes, and scrying tools with an intuitive understanding of their divinatory potential.</p>
         </div>
       </div>
     </div>
@@ -179,7 +179,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     height: 250px;
     margin: 0 auto;
     position: relative;
-    border: 3px solid var(--muted-gold);
+    border: 5px solid var(--peaceful-yellow);
     border-radius: 50%;
     animation: symbolRotate 40s linear infinite;
   }
@@ -192,7 +192,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transform: translate(-50%, -50%);
     width: 70%;
     height: 70%;
-    border: 2px solid var(--sage-green);
+    border: 3px solid var(--peaceful-green);
     border-radius: 50%;
     animation: symbolRotate 30s linear infinite reverse;
   }
@@ -205,9 +205,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transform: translate(-50%, -50%);
     width: 40%;
     height: 40%;
-    border: 2px solid var(--rich-purple);
+    border: 5px solid var(--peaceful-red);
     border-radius: 50%;
     animation: symbolRotate 20s linear infinite;
+  }
+
+  @keyframes symbolRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   .philosophy {
@@ -303,27 +308,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .keeper1 {
-    background: linear-gradient(135deg, var(--forest-green), var(--sage-green));
+    background-image: url('/images/team-jean-moore.jpg');
+    background-size: cover;
+    background-position: center;
   }
 
   .keeper2 {
-    background: linear-gradient(135deg, var(--rich-purple), #8a5aa8);
+    background-image: url('/images/team-alex-sandoval.jpg');
+    background-size: cover;
+    background-position: center;
   }
 
   .keeper3 {
-    background: linear-gradient(135deg, var(--deep-forest-blue), var(--natural-wood));
-  }
-
-  .avatar-placeholder::before {
-    content: '🧙‍♀️';
-  }
-
-  .keeper2 .avatar-placeholder::before {
-    content: '🔮';
-  }
-
-  .keeper3 .avatar-placeholder::before {
-    content: '🌟';
+    background-image: url('/images/team-aime-russell.jpg');
+    background-size: cover;
+    background-position: center;
   }
 
   .team-member h3 {

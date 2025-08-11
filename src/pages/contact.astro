@@ -19,13 +19,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="contact-grid">
         <!-- Contact Form -->
         <div class="contact-form-section">
-          <h2 class="scroll-animate" data-animation="bounceInUp" data-delay="0">Send Us a Message</h2>
+          <h2 class="scroll-animate" data-animation="bounceInLeft" data-delay="0">Send Us a Message</h2>
           <p class="form-intro">
             Whether you seek guidance, have questions about our offerings, or wish to share your own wisdom, 
             we are here to listen. Every message is received with reverence and answered with care.
           </p>
           
-          <form class="contact-form" id="contact-form">
+          <form class="contact-form scroll-animate" data-animation="rubberBand" data-delay="0" id="contact-form">
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required>
@@ -53,7 +53,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <textarea id="message" name="message" rows="6" required placeholder="Share your thoughts, questions, or experiences..."></textarea>
             </div>
             
-            <button type="submit" class="submit-btn">Send Message</button>
+            <button type="submit" class="btn btn-orange submit-btn">Send Message</button>
           </form>
         </div>
 
@@ -62,7 +62,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="info-card mystical-card scroll-animate" data-animation="rubberBand" data-delay="0">
             <h3>Our Sacred Space</h3>
             <div class="info-item">
-              <div class="info-icon">📍</div>
+              <div class="info-icon"><i class="fas fa-map-location"></i></div>
               <div class="info-content">
                 <p><strong>Mystical Address</strong></p>
                 <p>13 Moonstone Lane<br>Salem, MA 01970<br>United States</p>
@@ -70,7 +70,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
             
             <div class="info-item">
-              <div class="info-icon">📧</div>
+              <div class="info-icon"><i class="fas fa-envelope"></i></div>
               <div class="info-content">
                 <p><strong>Email</strong></p>
                 <p><a href="mailto:wisdom@hearthandharrow.com">wisdom@hearthandharrow.com</a></p>
@@ -78,7 +78,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
             
             <div class="info-item">
-              <div class="info-icon">📞</div>
+              <div class="info-icon"><i class="fas fa-phone"></i></div>
               <div class="info-content">
                 <p><strong>Sacred Hotline</strong></p>
                 <p><a href="tel:+1-555-MYSTIC">(555) MYSTIC-1</a></p>
@@ -115,10 +115,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <h3>Follow Our Journey</h3>
             <p>Connect with our community and stay updated on lunar cycles, seasonal rituals, and new arrivals.</p>
             <div class="social-links">
-              <a href="#" class="social-link">🌙 Instagram</a>
-              <a href="#" class="social-link">📘 Facebook</a>
-              <a href="#" class="social-link">🐦 Twitter</a>
-              <a href="#" class="social-link">📺 YouTube</a>
+              <a href="#" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
+              <a href="#" class="social-link"><i class="fab fa-facebook"></i> Facebook</a>
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i> Twitter</a>
+              <a href="#" class="social-link"><i class="fab fa-youtube"></i> YouTube</a>
             </div>
           </div>
         </div>
@@ -178,7 +178,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .contact-main {
     padding: 6rem 0;
-    background: rgba(26, 26, 26, 0.3);
+    background: var(--peaceful-purple);
   }
 
   .contact-grid {
@@ -191,17 +191,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .contact-form-section h2 {
     margin-bottom: 1.5rem;
     font-size: 2.5rem;
+    color: var(--pure-white) !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: var(--pure-white) !important;
+    background-clip: initial !important;
   }
 
   .form-intro {
     font-size: 1.1rem;
     line-height: 1.7;
     margin-bottom: 3rem;
-    color: var(--sage-green);
+    color: var(--pure-white);
   }
 
   .contact-form {
-    background: rgba(61, 47, 31, 0.3);
+    background: var(--crayola-purple);
     padding: 3rem;
     border-radius: 15px;
     border: 1px solid rgba(184, 148, 95, 0.2);
@@ -215,7 +220,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: var(--muted-gold);
+    color: var(--pure-white);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -227,10 +232,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .form-group textarea {
     width: 100%;
     padding: 0.75rem 1rem;
-    background: rgba(26, 26, 26, 0.7);
+    background: var(--pure-white);
     border: 1px solid rgba(184, 148, 95, 0.3);
     border-radius: 8px;
-    color: var(--moonlight-silver);
+    color: var(--text-gray);
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
     transition: all 0.3s ease;
@@ -240,9 +245,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .form-group select:focus,
   .form-group textarea:focus {
     outline: none;
-    border-color: var(--muted-gold);
-    box-shadow: 0 0 10px rgba(184, 148, 95, 0.2);
-    background: rgba(26, 26, 26, 0.9);
+    border-color: var(--crayola-orange);
+    box-shadow: 0 0 10px rgba(247, 147, 22, 0.2);
+    background: var(--pure-white);
   }
 
   .form-group input::placeholder,
@@ -253,6 +258,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .form-group select {
     cursor: pointer;
+    height: 3rem; // Match input height
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23666" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px;
   }
 
   .form-group select option {
@@ -266,23 +279,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .submit-btn {
-    width: 100%;
-    padding: 1rem 2rem;
-    background: var(--ethereal-gradient);
-    color: var(--moonlight-silver);
+    display: inline-block;
+    padding: 0.875rem 2.5rem;
+    background: var(--crayola-green);
+    color: var(--pure-white);
     border: none;
-    border-radius: 30px;
+    border-radius: 50px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    text-transform: none;
     font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    width: 100%;
   }
 
   .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(184, 148, 95, 0.3);
+    box-shadow: var(--shadow-colored);
+    background: var(--peaceful-green);
+    color: var(--text-gray);
+  }
+
+  .submit-btn:active {
+    transform: translateY(0) scale(1);
+  }
+
+  // Shimmer effect
+  .submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .submit-btn:hover::before {
+    left: 100%;
   }
 
   .contact-info-section {
@@ -294,7 +331,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .info-card,
   .hours-card,
   .social-card {
-    background: rgba(61, 47, 31, 0.3);
+    background: var(--crayola-purple);
     padding: 2.5rem;
     border-radius: 15px;
     border: 1px solid rgba(184, 148, 95, 0.2);
@@ -307,6 +344,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: 2rem;
     font-size: 1.5rem;
     text-align: center;
+    color: var(--pure-white) !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: var(--pure-white) !important;
+    background-clip: initial !important;
   }
 
   .info-item {
@@ -324,6 +366,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 1.5rem;
     margin-top: 0.25rem;
     flex-shrink: 0;
+    color: var(--soft-white);
   }
 
   .info-content p {
@@ -331,20 +374,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     line-height: 1.5;
   }
 
+  .info-content p {
+    color: var(--pure-white);
+  }
+
   .info-content p:first-child {
-    color: var(--muted-gold);
+    color: var(--pure-white);
     font-weight: 500;
     margin-bottom: 0.25rem;
   }
 
   .info-content a {
-    color: var(--sage-green);
+    color: var(--pure-white);
     text-decoration: none;
     transition: color 0.3s ease;
   }
 
   .info-content a:hover {
-    color: var(--muted-gold);
+    color: var(--peaceful-orange);
   }
 
   .hours-list {
@@ -366,23 +413,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .day {
-    color: var(--muted-gold);
+    color: var(--pure-white);
     font-weight: 500;
   }
 
   .time {
-    color: var(--sage-green);
+    color: var(--pure-white);
   }
 
   .special-hours {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(184, 148, 95, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
   }
 
   .special-hours p {
-    color: var(--sage-green);
+    color: var(--pure-white);
     font-size: 0.9rem;
     margin: 0;
   }
@@ -390,7 +437,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .social-card p {
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--sage-green);
+    color: var(--pure-white);
   }
 
   .social-links {
@@ -402,10 +449,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .social-link {
     display: block;
     padding: 0.75rem 1rem;
-    background: rgba(26, 26, 26, 0.5);
-    border: 1px solid rgba(184, 148, 95, 0.3);
+    background: var(--crayola-orange);
+    border: 1px solid var(--crayola-orange);
     border-radius: 8px;
-    color: var(--muted-gold);
+    color: var(--pure-white);
     text-decoration: none;
     text-align: center;
     transition: all 0.3s ease;
@@ -413,9 +460,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .social-link:hover {
-    background: rgba(184, 148, 95, 0.1);
-    border-color: var(--muted-gold);
+    background: var(--peaceful-orange);
+    border-color: var(--peaceful-orange);
     transform: translateY(-2px);
+  }
+
+  .social-link i {
+    margin-right: 0.5rem;
   }
 
   .faq-section {
@@ -436,7 +487,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .faq-item {
-    background: rgba(26, 26, 26, 0.7);
+    background: var(--crayola-purple);
     padding: 2.5rem;
     border-radius: 15px;
     border: 1px solid rgba(184, 148, 95, 0.3);
@@ -446,12 +497,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .faq-item h3 {
     margin-bottom: 1.5rem;
     font-size: 1.3rem;
-    color: var(--muted-gold);
+    color: var(--pure-white) !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: var(--pure-white) !important;
+    background-clip: initial !important;
   }
 
   .faq-item p {
     line-height: 1.7;
-    color: var(--moonlight-silver);
+    color: var(--pure-white);
     margin: 0;
   }
 
@@ -467,6 +522,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     .contact-form {
       padding: 2rem;
+    }
+
+    .form-group select {
+      font-size: 16px; // Prevents zoom on iOS
+      padding: 1rem; // Better touch targets
+      height: auto;
+      min-height: 3rem;
     }
 
     .faq-section h2 {

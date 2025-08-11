@@ -17,7 +17,7 @@
   --peaceful-purple: #c4b5fd;     // Light Purple
 
   // Transparetnt Variants - Gentle & Subtle
-  --ethereal-gradient: rgb(134, 239, 172, .8); // Light green
+  --ethereal-gradient: rgb(220, 255, 220, .8);
   
   // Neutral Colors - Clean & Bright
   --pure-white: #FFFFFF;
@@ -345,7 +345,7 @@ a:hover {
 .bento-item {
   background: var(--pure-white);
   border-radius: 24px;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(31, 117, 254, 0.05);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -484,6 +484,10 @@ a:hover {
   &.animate.animate__rubberBand {
     animation: gentleRubberBand 1.2s ease-out forwards;
   }
+
+  &.animate.animate__peacefulFloat {
+    animation: gentlePeacefulFloat 1.5s ease-out forwards;
+  }
 }
 
 // Gentle Animation Keyframes
@@ -547,30 +551,57 @@ a:hover {
 @keyframes gentleRubberBand {
   from {
     opacity: 0;
-    transform: translate3d(0, 20px, 0);
-  }
-  15% {
-    opacity: 0.3;
-    transform: translate3d(-5px, 15px, 0);
+    transform: scale3d(1, 1, 1);
   }
   30% {
-    opacity: 0.6;
-    transform: translate3d(5px, 10px, 0);
+    opacity: 0.7;
+    transform: scale3d(1.08, 0.92, 1);
   }
-  45% {
+  40% {
     opacity: 0.8;
-    transform: translate3d(-3px, 5px, 0);
+    transform: scale3d(0.92, 1.08, 1);
   }
-  60% {
+  50% {
     opacity: 0.9;
-    transform: translate3d(2px, 2px, 0);
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  65% {
+    opacity: 0.95;
+    transform: scale3d(0.97, 1.03, 1);
   }
   75% {
-    opacity: 0.95;
-    transform: translate3d(-1px, 1px, 0);
+    opacity: 0.98;
+    transform: scale3d(1.02, 0.98, 1);
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes gentlePeacefulFloat {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0) rotate(-2deg);
+  }
+  25% {
+    opacity: 0.4;
+    transform: translate3d(-8px, 25px, 0) rotate(1deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate3d(5px, 10px, 0) rotate(-1deg);
+  }
+  75% {
+    opacity: 0.9;
+    transform: translate3d(-3px, 5px, 0) rotate(0.5deg);
+  }
+  90% {
+    opacity: 0.95;
+    transform: translate3d(2px, 2px, 0) rotate(-0.2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
 }
